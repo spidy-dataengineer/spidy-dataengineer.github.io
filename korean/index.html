@@ -129,13 +129,13 @@
             <div class="col-md-8 col-md-pull-4">
                 <div class="short-info wow fadeInUp">
                     <!-- <h3>Objective</h3> -->
-                    <p>I've been working as a Data Engineer and Data Consultant for the past 4 years, tackling complex data challenges across various industries.
-                        <br><br>
-                        My expertise lies in data governance, processing, and developing solutions tailored to business needs. Throughout my career, I have played a key role in ensuring data quality, standardization, and governance, working closely with stakeholders to align data strategies with business objectives. I focus on designing scalable data solutions that streamline workflows and enable efficient decision-making. From building automated data pipelines to optimizing large-scale data processing frameworks, I thrive on solving real-world business problems through technical innovation.
-                        <br><br>
-                        With experience spanning telecommunications, retail, government (Ministry of Employment and Labor), and edtech, I bring a broad perspective on data-driven problem-solving. My approach combines deep technical expertise with a strategic mindset, always looking for ways to enhance efficiency and drive impact.
-                        <br><br>
-                        Beyond work, I have a passion for basketball and gaming, and I enjoy watching and playing various sports. I'm an avid reader and music enthusiast, always looking for ways to grow and expand my knowledge across different domains.
+                    <p> 총 4년의 경력으로 데이터 엔지니어이자 데이터 컨설턴트로써 다양한 산업 분야에서 복잡한 데이터 문제를 해결하며 전문성을 길러왔습니다.
+                        <br></br>
+                        데이터 거버넌스, 자동화된 데이터 파이프라인 구축부터 스파크 최적화 및 튜닝과 같은 업무를 주로 했으며, 정보계 운영 및 데이터 레이크 운영, 그리고 비즈니스 요건에 맞는 개발을 해왔습니다. 경력 내내 데이터 품질, 표준화, 거버넌스를 보장하는 데 핵심적인 역할을 했으며, 현업 및 AI관련 부서와 협력 하여 프로젝트를 진행해왔습니다.
+                        <br></br>
+                        통신, 유통, 정부 기관(고용노동부), 에듀테크 등 다양한 산업에서의 업무 경험이 있으며 다른 산업에서의 업무 경험 또한 준비가 되어 있습니다.
+                        <br></br>
+                        업무 외적으로는 농구와 게임을 좋아하고, 다양한 스포츠를 하고 관람하는 것을 좋아합니다. 또한 독서와 음악 감상도 주기적으로 하고 있으며, 여러 분야에 걸쳐 지식과 시야를 넓히는 데 늘 노력하고 있습니다.
                     </p><!-- 이부분 -->
                 </div>
 
@@ -213,19 +213,31 @@
                                         <p>
                                         <ul type="square">
                                             <li>
-                                                • Developed and optimized scalable Data Pipelines using Spark and Airflow to process unstructured text data from five different sources, integrating system logs, app logs, and VOC (Voice of Customer) data. Collaborated closely with other departments to incorporate ML-based processing into the pipeline, enabling real-time insights. Configured alerts to be triggered every hour during business hours, ensuring timely responses to critical issues. This initiative resulted in a unified mart table, significantly enhancing data accessibility and usability.
+                                                • AICC(AI Contact Center) 프로젝트에서 현업과 AI부서와의 협업을 통해 VOC, 앱로그, 시스템로그와 같은 비정형 텍스트 데이터를 정제하여 통합된 마트로 적재하는 데이터 파이프라인을 설계 하고 구축 하는 업무를 담당 했으며, 1시간 단위로 현업으로부터 제공 받은 기준치를 초과하는 경우 각 담당자에게 알림을 발송하는 개발을 담당, 또한 AI부서가 제공한 ML코드를 KubernetesPodOperator를 통해 수행하여 수정 및 인프라 관리 업무를 최소화 시킴.
                                                 <br></br>
-                                                • Engineered an automated notification platform that dynamically analyzes statistical thresholds in VOC data, ensuring real-time alerts for responsible teams. This system improved VOC response speed by 230% and reduced VOC incident frequency by 15%, contributing to enhanced customer satisfaction and operational efficiency.
+                                                • 실시간 데이터 통합 마트 설계 및 데이터 적재 - 실시간 데이터로부터 파생된 여러 웨어하우스 성격의 테이블을 하나의 통합된 마스터성 테이블로 전환 개발
                                                 <br></br>
-                                                • Designed and deployed a text classification pipeline for VOC analysis, leveraging Airflow for efficient model execution. By automating the model deployment process, infrastructure management overhead was significantly reduced, while development time was also shortened, allowing for faster iterations and improved accuracy.
+                                                • 단일 EC2에 있는 Airflow server(Monolothic)을 k8s(MSA)위에 Helm chart를 통해 무중단 Migration 업무 진행, Metadatabase 데이터 이관, Airflow version 2.1.3 -> 2.7.1로 버전 업, S3 Logging, gitsync를 통해 jenkins DAG배포 프로세스 제거, Airflow image versioning 및 IAC를 통한 관리를 통한 server resource manage 감소, KubernetesExecutor 사용 및 KubernetesPodOperator 도입, prometheus & grafana metric 전송 및 모니터링 도입
                                                 <br></br>
-                                                • Enhanced Airflow infrastructure by migrating from a monolithic local setup to a Kubernetes-based MSA (Microservices Architecture) using Helm charts. This transition streamlined the CI/CD process, enabling faster deployments and reducing maintenance efforts. Additionally, Airflow metadata was migrated to AWS RDS, mitigating data loss risks and enhancing scalability. The migration also strengthened versioning control and security policies, ensuring a more robust and reliable workflow management system.
+                                                • 모니터링 및 알림 고도화 업무 수행 - ETL 완료 시 관련된 상세 내용(Table명, 데이터 건수, 사용한 glue crawler, 수행 시간 등) 이메일 & slack 전송 개발, Data lake 건수 추이 시각화 및 하회 시 알림 발송 개발, Airflow 및 Kafka cluster Metric 대시보드(Prometheus & Grafana) 연동과 알림 발송 개발
                                                 <br></br>
-                                                • Implemented advanced monitoring and alerting solutions using Prometheus, Grafana, and Slack integrations. Designed and deployed comprehensive dashboards to track key metrics across Airflow DAGs and Kafka clusters, ensuring real-time visibility into system performance. These efforts led to an 18% reduction in error rates within Airflow and Kafka clusters while improving anomaly detection accuracy in the Data Lake by 99%, significantly reducing incident response times.
+                                                • ETL 최초 적재 수동 업무 자동화 개발(Airflow DAG을 통해 TSV적재, Parquet 변환, Glue Crawling, 알림 발송 자동화), ETL 병렬 처리 개발
                                                 <br></br>
-                                                • Optimized ETL performance, reducing execution time from 90 minutes to 15 minutes through parallel processing and task simplification, achieving a 600% efficiency gain. Additionally, fine-tuned Spark jobs, cutting workload execution time by 36% and reducing EMR costs by 55%, optimizing overall resource utilization.
+                                                • 개인화 추천 시스템 Spark Batch job 성능 튜닝 및 자원 최적화 업무 수행, 동일 자원 6시간 10분 수행 -> 2시간 50분으로 단축
                                                 <br></br>
-                                                • Led performance optimization efforts for a personalized recommendation system, reducing Spark batch job execution time from 6 hours 10 minutes to 2 hours 50 minutes while maintaining the same resource allocation. This initiative not only drastically improved processing efficiency but also significantly lowered operational costs, ensuring a more cost-effective and scalable recommendation pipeline.
+                                                • Airflow DAG boiler Plate 개발 및 pre-commit을 통한 black format 적용 개발
+                                                <br></br>
+                                                • EMR on EC2 -> EMR Serverless 전환 infra provisioning 시간 단축, EMR version up, AQE 사용을 통한 spark 성능 향상, 비용 평균 15프로 감소
+                                                <br></br>
+                                                • 상시 EMR on EC2 제거, legacy Hive job + Oozie Scheduling -> EMR Serverless Spark + Airflow로 전환, zeppelin을 이용한 Ad-Hoc 작업 EMR Notebook으로 전환
+                                                <br></br>
+                                                • 대용량 데이터 추출 업무(Spark, SparkSQL) 수행
+                                                <br></br>
+                                                • 코드 표준 도입, Airflow DAG 표준 도입, 메타데이터 정리 및 문서화와 같은 거버넌스 구축업무 수행
+                                                <br></br>
+                                                • kafka cluster, kinesis 인프라 관리 및 streaming 데이터 파이프라인 개발(spark streaming, kinesis firehose)
+                                                <br></br>
+                                                • 현업 및 관련 부서를 대상으로 한 정보계 및 ETL요청 데이터 교육
                                             </li><!-- 여기 다시하기 -->
                                         </ul>
                                         </p>
@@ -248,13 +260,13 @@
                                 <div class="timeline-body">
                                     <p>
                                     <ul type="circle">
-                                        <li>• Led Data Governance initiatives for GS Retail, collaborating closely with stakeholders to standardize and unify business terminology across cloud-based and on-premise environments. Conducted data quality assessments for RDBMS systems, ensuring compliance with validity, semantic integrity, and business relevance. Provided expert consulting on data governance strategies, enhancing overall data reliability and accessibility.
+                                        <li>• GS retail에서 비즈니스 용어 통합 및 표준화 업무 진행, 데이터 거버넌스 구축 및 비즈니스적인 의미의 데이터 품질, 중복 검사 및 개선 업무 수행
                                             <br></br>
-                                            • Developed standardized data modeling and governance frameworks for the Ministry of Employment and Labor’s Smart Labor Management System, a next-generation system migration project. Played a pivotal role in crafting a robust Data Governance plan, ensuring seamless integration from the legacy system to the new platform. Additionally, automated critical data validation processes using custom Python utilities, reducing WBS delivery time by two weeks through automated duplicate detection modules and improving operational efficiency.
+                                            • 고용노동부 차세대 프로젝트에서 통합 모델러로써 모델링 검수 및 데이터베이스 표준화 업무 진행, 표준화 자동 검토 유틸리티 개발 업무 수행
                                             <br></br>
-                                            • Designed and executed large-scale data migrations for SK Broadband, successfully transitioning on-premise Hadoop cluster Hive workloads to AWS EMR with a near-identical cluster configuration. Led the migration of Spark workloads, optimizing resource allocation for improved performance. Additionally, converted on-premise Oozie scheduling to AWS Managed Workflows for Apache Airflow (MWAA), ensuring a seamless cloud transition while achieving up to 5x faster processing speeds.
+                                            • sk broadband cloud migration 프로젝트에서 on-premise에 있는 hive workload를 AWS Cloud의 EMR, Spark로 이관하는 프로젝트 진행하여 5배 이상 속도를 향상 시켰으며, oozie 스케줄링을 MWAA DAG로 전환, ExaData와 Redshift 비용을 비교하여 전환 여부 컨설팅 업무 진행
                                             <br></br>
-                                            • Optimized cloud costs during migration by implementing on-demand EMR batch scheduling and leveraging spot instances, effectively reducing daily cloud expenses by 30% compared to on-premise infrastructure. Developed automation solutions to dynamically scale resources based on workload demands, utilizing AWS cost-saving strategies to enhance cost efficiency without compromising performance.
+                                            •  Spark job 전환으로 인해 향상된 속도와 EMR Spot Instance 및 batch scheduling을 통해 on-premise 환경 대비 일 평균 약 30% 절감하는 성과를 거둠.
                                         </li><!-- 여기 다시하기 -->
                                     </ul>
                                     </p>
