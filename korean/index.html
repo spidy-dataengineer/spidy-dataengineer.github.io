@@ -1,544 +1,513 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="데이터 엔지니어 박지호의 이력서입니다.">
+    <meta property="og:title" content="박지호 - Data Engineer Resume">
+    <meta property="og:description" content="끊임없이 성장하고 기록하는 데이터 엔지니어 박지호입니다.">
+    <title>박지호 | Data Engineer Resume</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Jiho Park" />
+    <style>
+        :root {
+            --primary-color: #2563eb; /* 신뢰감을 주는 블루 계열 */
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --tag-bg: #eff6ff;
+            --tag-text: #1d4ed8;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <title style="font-size: 26px">박지호</title>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 2rem 1rem;
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- Font Awesome CSS -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <!-- Animate css -->
-    <link href="assets/css/animate.css" rel="stylesheet">
-    <!-- Magnific css -->
-    <link href="assets/css/magnific-popup.css" rel="stylesheet">
-    <!-- Custom styles CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" media="screen">
-    <!-- Responsive CSS -->
-    <link href="assets/css/responsive.css" rel="stylesheet">
-    <!-- Animated Headline -->
-    <link rel="stylesheet" type="text/css" href="assets/css/animated-headline.css">
-    <!-- Roboto Web Font-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
 
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="assets/slick/slick-theme.css">
+        /* Header */
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        .role {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+        }
+
+        /* About */
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .company-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .project {
+            margin-top: 1.2rem;
+            padding-left: 1rem;
+            border-left: 2px solid #e5e7eb;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .project-period {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        .project ul {
+            list-style-type: none;
+            padding-left: 0.5rem;
+        }
+
+        .project li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: #4b5563;
+        }
+
+        .project li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .tech-stack-inline {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background-color: var(--tag-bg);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            display: inline-block;
+        }
+
+        strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #374151;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Education & Certs */
+        .simple-list-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .simple-list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Print Media Query */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            .contact-item a::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8rem;
+                color: #666;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .exp-header {
+                flex-direction: column;
+            }
+            .project-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body style="background-color: #FAFAFA; font-family: 'Roboto', sans-serif; font-weight: 400">
-<!-- Preloader -->
-<div id="tt-preloader">
-    <div id="pre-status">
-        <div class="preload-placeholder"></div>
-    </div>
-</div>
-
-<!-- Home Section -->
-<section id="home" class="tt-fullHeight" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div class="intro">
-
-        <h1 class="tt-headline letters type"> <!--letters type was the original class code-->
-            <!-- you can use "rotate-1", "letters type", "letters rotate-2", "letters rotate-3", "letters scale", "loading-bar", "slide", "clip is-full-width", "push" -->
-            <div class="intro-sub">박지호</div>
-            <span class="tt-words-wrapper">
-                        <b class="is-visible">데이터 엔지니어</b>
-
-
-                    </span>
-        </h1>
-        <br>
-
-        <div class="social-icons">
-            <ul class="list-inline">
-                <li><a target="_blank" href="https://www.linkedin.com/in/de-jiho/"><i
-                        class="fa fa-linkedin"></i></a></li>
-<!--                <li><a target="_blank" href="https://github.com/spidy-dataengineer"><i-->
-<!--                        class="fa fa-github"></i></a></li>-->
-            </ul>
-        </div> <!-- /.social-icons -->
-    </div>
-
-    <div class="mouse-icon">
-        <div class="wheel"></div>
-    </div>
-</section><!-- End Home Section -->
-
-
-
-
-<!-- Navigation -->
-<header class="header">
-    <nav class="navbar navbar-custom" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<div class="container">
+    <header>
+        <h1>박지호</h1>
+        <div class="role">Data Engineer</div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:jiho358896@gmail.com">jiho358896@gmail.com</a>
             </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:010-7473-3588">010-7473-3588</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/de-jiho" target="_blank">github.com/de-jiho</a> <!-- Github 주소는 임시로 넣었습니다. 본인의 ID로 수정해주세요 -->
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-blog"></i>
+                <a href="https://spidyweb.tistory.com" target="_blank">spidyweb.tistory.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/de-jiho" target="_blank">linkedin.com/in/de-jiho</a>
+            </div>
+        </div>
+    </header>
 
-            <div class="collapse navbar-collapse" id="custom-collapse">
-                <ul class="nav navbar-nav navbar-center">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#workEx">Experience</a></li>
-<!--                    <li><a href="#projects">Projects</a></li>-->
-                    <li><a href="#skills">Skills</a></li>
-<!--                    <li><a href="#recommendations">Recommendations</a></li>-->
-                    <li><a href="#pubAndCert">Certifications</a></li>
-                    <!-- <li class="testimonial-check"><a href="#testimonials">Testimonials</a></li> -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-text">
+            <p>
+                <strong>더 나은 아키텍처와 프로세스를 고민하는 데이터 엔지니어</strong>입니다. 
+                Spark와 Airflow를 기반으로 한 대용량 데이터 파이프라인 구축 및 운영 경험을 보유하고 있으며, 
+                On-Premise에서 Cloud(AWS)로의 마이그레이션 프로젝트를 주도적으로 수행했습니다.
+            </p>
+            <p>
+                <strong>"기록은 성장의 밑거름"</strong>이라는 신념으로 약 350개의 기술 포스트를 작성하며 꾸준히 학습한 내용을 공유합니다.
+                비즈니스 문제를 기술적 관점에서 해결하는 것을 즐기며, 특히 데이터 파이프라인의 <strong>비용 최적화와 처리 속도 개선</strong>에 강점이 있습니다.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+
+        <!-- 웅진씽크빅 -->
+        <div class="experience-item">
+            <div class="exp-header">
+                <span class="company-name">(주)웅진씽크빅</span>
+                <span class="period">2023.05 - 2024.12</span>
+            </div>
+            <div class="job-title">데이터 엔지니어 연구원</div>
+
+            <!-- Project 1 -->
+            <div class="project">
+                <div class="project-title">
+                    ETL 최적화 및 파이프라인 자동화
+                    <span class="project-period">2023.12 - 2024.04</span>
+                </div>
+                <div class="project-desc">Spark Job 최적화 및 수동 업무 자동화를 통한 비용 절감 및 생산성 향상</div>
+                <ul>
+                    <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>90분에서 15분으로 83% 단축</strong> (업무 효율 600% 향상).</li>
+                    <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch 시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong>.</li>
+                    <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong>.</li>
+                    <li>반복되는 파이프라인 코드를 템플릿화하여 개발 속도를 <strong>240% 향상</strong>시키고 코드 일관성 확보.</li>
+                    <li><span class="tech-stack-inline">Python</span> <span class="tech-stack-inline">Spark</span> <span class="tech-stack-inline">AWS EMR</span> <span class="tech-stack-inline">Airflow</span></li>
                 </ul>
             </div>
-        </div><!-- .container -->
-    </nav>
-</header><!-- End Navigation -->
 
-
-<!-- About Section -->
-<section id="about" class="about-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">About Me</h2>
-
-        <div class="row">
-
-            <div class="col-md-4 col-md-push-8">
-                <div class="biography">
-                    <div class="myphoto">
-                        <img src="assets/images/photoofme.jpg" alt="">
-                    </div>
-                    <ul>
-                        <li><strong>이름 : </strong>박지호</li>
-                        <li><strong>생년월일 : </strong>1996.01.15</li>
-                        <li><strong>이메일 : </strong>jiho358896@gmail.com</li>
-                    </ul>
+            <!-- Project 2 -->
+            <div class="project">
+                <div class="project-title">
+                    Airflow 인프라 고도화 및 MSA 전환
+                    <span class="project-period">2024.05 - 2024.06</span>
                 </div>
-            </div> <!-- col-md-4 -->
-
-            <div class="col-md-8 col-md-pull-4">
-                <div class="short-info wow fadeInUp">
-                    <!-- <h3>Objective</h3> -->
-                    <p> 총 4년의 경력으로 데이터 엔지니어이자 데이터 컨설턴트로써 다양한 산업 분야에서 복잡한 데이터 문제를 해결하며 전문성을 길러왔습니다.
-                        <br></br>
-                        데이터 거버넌스, 자동화된 데이터 파이프라인 구축부터 스파크 최적화 및 튜닝과 같은 업무를 주로 했으며, 정보계 운영 및 데이터 레이크 운영, 그리고 비즈니스 요건에 맞는 개발을 해왔습니다. 경력 내내 데이터 품질, 표준화, 거버넌스를 보장하는 데 핵심적인 역할을 했으며, 현업 및 AI관련 부서와 협력 하여 프로젝트를 진행해왔습니다.
-                        <br></br>
-                        통신, 유통, 정부 기관(고용노동부), 에듀테크 등 다양한 산업에서의 업무 경험이 있으며 다른 산업에서의 업무 경험 또한 준비가 되어 있습니다.
-                        <br></br>
-                        업무 외적으로는 농구와 게임을 좋아하고, 다양한 스포츠를 하고 관람하는 것을 좋아합니다. 또한 독서와 음악 감상도 주기적으로 하고 있으며, 여러 분야에 걸쳐 지식과 시야를 넓히는 데 늘 노력하고 있습니다.
-                    </p><!-- 이부분 -->
-                </div>
-
-                <div class="short-info wow fadeInUp">
-
-                    <ul class="list-check">
-                        <li>데이터 엔지니어링</li>
-                        <li>AWS 클라우드 플랫폼</li>
-                        <li>정보계 운영</li>
-                        <li>데이터 거버넌스</li>
-                        <li>데이터 컨설팅 및 교육</li>
-                        <li>데이터 파이프라인 설계/구축</li>
-                        <li>빅데이터 처리</li>
-                        <li>실시간 데이터 처리</li>
-                    </ul>
-                </div>
-
+                <div class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes 기반으로 무중단 마이그레이션</div>
+                <ul>
+                    <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보.</li>
+                    <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong>.</li>
+                    <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보.</li>
+                    <li><span class="tech-stack-inline">Kubernetes</span> <span class="tech-stack-inline">Airflow</span> <span class="tech-stack-inline">AWS RDS</span> <span class="tech-stack-inline">Helm</span></li>
+                </ul>
             </div>
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</section><!-- End About Section -->
 
-<section id="education" class="resume-section section">
-    <div class="container">
-        <h4 class="section-title wow fadeInUp">Education</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="resume">
-                    <ul class="timeline">
-                        <li>
-                            <div class="posted-date">
-                                <span class="month" style="background-color: #FAFAFA;">2016.04.16 - 2016.08.18</span>
-                            </div><!-- /posted-date -->
-
-                            <div class="timeline-panel wow fadeInUp">
-                                <div class="timeline-content">
-                                    <div class="timeline-heading">
-                                        <h3>컴퓨터공학과</h3>
-                                        <span>학점은행제</span>
-                                    </div><!-- /timeline-heading -->
-
-                                    <div class="timeline-body">
-                                        <p>전공 - 컴퓨터공학</p>
-                                    </div><!-- /timeline-body -->
-                                </div> <!-- /timeline-content -->
-                            </div><!-- /timeline-panel -->
-                        </li>
-                    </ul>
+            <!-- Project 3 -->
+            <div class="project">
+                <div class="project-title">
+                    모니터링 시스템 구축 및 알람 고도화
+                    <span class="project-period">2024.02 - 2024.04</span>
                 </div>
+                <ul>
+                    <li>Airflow/Kafka Cluster 메트릭을 Grafana 대시보드와 연동하여 <strong>장애 인지 및 대응 시간을 30% 단축</strong>.</li>
+                    <li>데이터 레이크 적재 건수 추이 시각화 및 이상 탐지(Threshold 기반) 알림 시스템 개발 (데이터 누락 탐지율 99%).</li>
+                    <li>Slack 단일 알림을 Email 멀티 채널로 확장하여 에러 전파력 강화.</li>
+                    <li><span class="tech-stack-inline">Grafana</span> <span class="tech-stack-inline">Prometheus</span> <span class="tech-stack-inline">Python</span></li>
+                </ul>
             </div>
-        </div><!-- /row -->
-    </div>
-</section>
 
-<section id="workEx" class="resume-section section">
-    <div class="container">
-        <h4 class="section-title wow fadeInUp">Work Experience</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="resume">
-                    <ul class="timeline">
-                        <li>
-                            <div class="posted-date">
-                                <span class="month" style="background-color: #FAFAFA;">2023.05 – 2024.12</span>
-                            </div><!-- /posted-date -->
-
-                            <div class="timeline-panel wow fadeInUp">
-                                <div class="timeline-content">
-                                    <div class="timeline-heading">
-                                        <h3>데이터 엔지니어</h3>
-                                        <span>웅진씽크빅</span>
-                                    </div><!-- /timeline-heading -->
-
-                                    <div class="timeline-body" style="text-align: left;">
-                                        <p>
-                                        <ul type="square">
-                                            <li>
-                                                • AICC(AI Contact Center) 프로젝트에서 현업과 AI부서와의 협업을 통해 VOC, 앱로그, 시스템로그와 같은 비정형 텍스트 데이터를 정제하여 통합된 마트로 적재하는 데이터 파이프라인을 설계 하고 구축 하는 업무를 담당 했으며, 1시간 단위로 현업으로부터 제공 받은 기준치를 초과하는 경우 각 담당자에게 알림을 발송하는 개발을 담당, 또한 AI부서가 제공한 ML코드를 KubernetesPodOperator를 통해 수행하여 수정 및 인프라 관리 업무를 최소화 시킴.
-                                                <br></br>
-                                                • 실시간 데이터 통합 마트 설계 및 데이터 적재 - 실시간 데이터로부터 파생된 여러 웨어하우스 성격의 테이블을 하나의 통합된 마스터성 테이블로 전환 개발
-                                                <br></br>
-                                                • 단일 EC2에 있는 Airflow server(Monolothic)을 k8s(MSA)위에 Helm chart를 통해 무중단 Migration 업무 진행, Metadatabase 데이터 이관, Airflow version 2.1.3 -> 2.7.1로 버전 업, S3 Logging, gitsync를 통해 jenkins DAG배포 프로세스 제거, Airflow image versioning 및 IAC를 통한 관리를 통한 server resource manage 감소, KubernetesExecutor 사용 및 KubernetesPodOperator 도입, prometheus & grafana metric 전송 및 모니터링 도입
-                                                <br></br>
-                                                • 모니터링 및 알림 고도화 업무 수행 - ETL 완료 시 관련된 상세 내용(Table명, 데이터 건수, 사용한 glue crawler, 수행 시간 등) 이메일 & slack 전송 개발, Data lake 건수 추이 시각화 및 하회 시 알림 발송 개발, Airflow 및 Kafka cluster Metric 대시보드(Prometheus & Grafana) 연동과 알림 발송 개발
-                                                <br></br>
-                                                • ETL 최초 적재 수동 업무 자동화 개발(Airflow DAG을 통해 TSV적재, Parquet 변환, Glue Crawling, 알림 발송 자동화), ETL 병렬 처리 개발
-                                                <br></br>
-                                                • 개인화 추천 시스템 Spark Batch job 성능 튜닝 및 자원 최적화 업무 수행, 동일 자원 6시간 10분 수행 -> 2시간 50분으로 단축
-                                                <br></br>
-                                                • Airflow DAG boiler Plate 개발 및 pre-commit을 통한 black format 적용 개발
-                                                <br></br>
-                                                • EMR on EC2 -> EMR Serverless 전환 infra provisioning 시간 단축, EMR version up, AQE 사용을 통한 spark 성능 향상, 비용 평균 15프로 감소
-                                                <br></br>
-                                                • 상시 EMR on EC2 제거, legacy Hive job + Oozie Scheduling -> EMR Serverless Spark + Airflow로 전환, zeppelin을 이용한 Ad-Hoc 작업 EMR Notebook으로 전환
-                                                <br></br>
-                                                • 대용량 데이터 추출 업무(Spark, SparkSQL) 수행
-                                                <br></br>
-                                                • 코드 표준 도입, Airflow DAG 표준 도입, 메타데이터 정리 및 문서화와 같은 거버넌스 구축업무 수행
-                                                <br></br>
-                                                • kafka cluster, kinesis 인프라 관리 및 streaming 데이터 파이프라인 개발(spark streaming, kinesis firehose)
-                                                <br></br>
-                                                • 현업 및 관련 부서를 대상으로 한 정보계 및 ETL요청 데이터 교육
-                                            </li><!-- 여기 다시하기 -->
-                                        </ul>
-                                        </p>
-                                    </div><!-- /timeline-body -->
-                                </div> <!-- /timeline-content -->
-                            </div><!-- /timeline-panel -->
-                        </li>
-                        <li><li class="timeline-inverted">
-                        <div class="posted-date">
-                            <span class="month" style="background-color: #FAFAFA;">2021.01 - 2023.05</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>데이터 엔지니어 / 데이터 컨설턴트</h3>
-                                    <span>비투엔</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p>
-                                    <ul type="circle">
-                                        <li>• GS retail에서 비즈니스 용어 통합 및 표준화 업무 진행, 데이터 거버넌스 구축 및 비즈니스적인 의미의 데이터 품질, 중복 검사 및 개선 업무 수행
-                                            <br></br>
-                                            • 고용노동부 차세대 프로젝트에서 통합 모델러로써 모델링 검수 및 데이터베이스 표준화 업무 진행, 표준화 자동 검토 유틸리티 개발 업무 수행
-                                            <br></br>
-                                            • sk broadband cloud migration 프로젝트에서 on-premise에 있는 hive workload를 AWS Cloud의 EMR, Spark로 이관하는 프로젝트 진행하여 5배 이상 속도를 향상 시켰으며, oozie 스케줄링을 MWAA DAG로 전환, ExaData와 Redshift 비용을 비교하여 전환 여부 컨설팅 업무 진행
-                                            <br></br>
-                                            •  Spark job 전환으로 인해 향상된 속도와 EMR Spot Instance 및 batch scheduling을 통해 on-premise 환경 대비 일 평균 약 30% 절감하는 성과를 거둠.
-                                        </li><!-- 여기 다시하기 -->
-                                    </ul>
-                                    </p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div> <!-- /timeline-panel -->
-                    </li></li>
-                    </ul>
+            <!-- Project 4 -->
+            <div class="project">
+                <div class="project-title">
+                    AICC 데이터 파이프라인 구축
+                    <span class="project-period">2024.06 - 2024.09</span>
                 </div>
-            </div>
-        </div><!-- /row -->
-    </div><!-- /.container -->
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="skills-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">기술스택</h2>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="skill-progress">
-                    <div class="skill-title">
-                        <h3>AWS Cloud Platform</h3>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                             aria-valuemax="100"><span>90%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title">
-                        <h3>Data Engineering</h3>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                             aria-valuemax="100"><span>80%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title">
-                        <h3>Python</h3>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                             aria-valuemax="100"><span>80%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-            </div><!-- /.col-md-6 -->
-
-            <div class="col-md-6">
-                <div class="skill-progress">
-                    <div class="skill-title">
-                        <h3>SQL</h3>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                             aria-valuemax="100"><span>80%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title">
-                        <h3>Scala</h3>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                             aria-valuemax="100"><span>20%</span></div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-            </div><!-- /.col-md-6 -->
-        </div><!-- /.row -->
-
-        <div class="skill-chart text-center">
-            <h3>More skills</h3>
-        </div>
-
-        <div class="row more-skill text-center">
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="90" data-color="e74c3c">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Spark</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="70" data-color="2ecc71">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Hadoop</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="90" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Airflow</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="75" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Kafka</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="70" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Kubernetes</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="90" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Strong Communication skills</span>
-                    </div>
-                </div>
+                <ul>
+                    <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축.</li>
+                    <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 및 VOC 건수 15% 감소 기여.</li>
+                </ul>
             </div>
         </div>
 
-    </div><!-- /.container -->
-</section><!-- End Skills Section -->
-
-<section id="pubAndCert" class="resume-section section-padding" style="background-color: #FAFAFA;">
-    <div class="container">
-        <h4 class="section-title wow fadeInUp">자격증</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="resume">
-                    <ul class="timeline">
-
-                        <li>
-                            <div class="posted-date">
-                                <span class="month" style="background-color: #FAFAFA;">2022</span>
-                            </div><!-- /posted-date -->
-
-                            <div class="timeline-panel wow fadeInUp">
-                                <div class="timeline-content">
-                                    <div class="timeline-heading">
-                                        <h3>AWS Certified Solutions Architect</h3>
-                                        <span>AWS</span>
-                                    </div><!-- /timeline-heading -->
-
-                                    <div class="timeline-body">
-                                        <p>
-                                            The AWS Certified Solutions Architect - Associate (SAA-C03) exam is intended for individuals who perform a solutions architect role. The exam validates a candidate’s ability to design solutions based on the AWS Well-Architected Framework.  The exam also validates a candidate’s ability to complete the following tasks: • Design solutions that incorporate AWS services to meet current business requirements and future projected needs • Design architectures that are secure, resilient, high-performing, and costoptimized • Review existing solutions and determine improvements
-                                            <br><br>
-                                            <a class="link" target="_blank"
-                                               href="https://www.credly.com/badges/d36d7e74-4773-486d-8991-0ea195f960ce">See certification</a>
-                                        </p>
-                                    </div><!-- /timeline-body -->
-                                </div> <!-- /timeline-content -->
-                            </div> <!-- /timeline-panel -->
-                        </li>
-                    </ul>
-                </div>
+        <!-- 비투엔 -->
+        <div class="experience-item">
+            <div class="exp-header">
+                <span class="company-name">(주)비투엔</span>
+                <span class="period">2021.01 - 2023.05</span>
             </div>
-        </div><!-- /row -->
-    </div>
-</section>
+            <div class="job-title">데이터 컨설턴트</div>
 
-<!-- Hire Section -->
-<section class="hire-section text-center" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div class="hire-section-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                </div><!-- /.col-md-12 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div><!-- /.hire-section-bg -->
-</section><!-- End Hire Section -->
-
-
-
-<!-- Contact Section -->
-<section id="contact" class="contact-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Get in touch</h2><br><br>
-        <div class="col-md-12">
-            <div class="row center-xs">
-                <div class="col-sm-4">
-                    <i class="fa fa-map-marker"></i>
-                    <address>
-                        <strong>거주지</strong>
-                        Seoul, Republic of Korea
-                    </address>
+            <div class="project">
+                <div class="project-title">
+                    SKB 정보계 Cloud Migration & 최적화
+                    <span class="project-period">2021.04 - 2021.08</span>
                 </div>
-
-                <div class="col-sm-4">
-                    <i class="fa fa-envelope"></i>
-                    <div class="contact-number">
-                        <strong>E-mail</strong>
-                        jiho358896@gmail.com
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <i class="fa fa-linkedin"></i> <!-- Font Awesome LinkedIn 아이콘 -->
-                    <div class="contact-number">
-                        <strong>LinkedIn</strong>
-                        <a href="https://www.linkedin.com/in/de-jiho" target="_blank">
-                            linkedin.com/in/de-jiho
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <i class="fa fa-phone"></i> <!-- Font Awesome Phone 아이콘 -->
-                    <div class="contact-number">
-                        <strong>연락처</strong>
-                        <a href="tel:010-7473-3588">
-                            010-7473-3588
-                        </a>
-                    </div>
-                </div>
-
+                <ul>
+                    <li>On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관하는 프로젝트 수행.</li>
+                    <li>HQL 쿼리를 PySpark로 변환하는 모듈을 개발하여 특정 Workload 처리 속도 <strong>최대 5배 향상</strong>.</li>
+                    <li>Oozie 워크플로우를 Airflow DAG로 성공적으로 전환.</li>
+                    <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원.</li>
+                </ul>
             </div>
 
-            <div class="row">
+            <div class="project">
+                <div class="project-title">
+                    전사 데이터 거버넌스 및 표준화 구축 (GS Retail / 고용노동부)
+                </div>
+                <ul>
+                    <li>GS Retail 정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립 및 품질 진단 수행.</li>
+                    <li>고용노동부 차세대 시스템 데이터 표준화 중복 검출 모듈 개발 및 품질 정비 리포팅.</li>
+                    <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행.</li>
+                </ul>
             </div>
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- End Contact Section -->
+        </div>
+    </section>
 
-
-<!-- Footer Section -->
-<footer class="footer-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright text-center">
-                    <p>&copy; Jiho Park<br>All information provided is factual.</p>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Scala</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Apache Spark</span>
+                    <span class="tag">Hadoop</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Infra & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="tag">Apache Airflow</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">AWS (EMR, S3, RDS, Redshift)</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">Linux</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Etc</h3>
+                <div class="skill-tags">
+                    <span class="tag">Data Governance</span>
+                    <span class="tag">ETL Optimization</span>
+                    <span class="tag">Data Modeling</span>
+                    <span class="tag">Grafana</span>
                 </div>
             </div>
         </div>
-    </div>
-</footer><!-- End Footer Section -->
+    </section>
 
-
-<!-- Scroll-up -->
-<div class="scroll-up">
-    <a href="#home"><i class="fa fa-angle-up"></i></a>
+    <section id="education-cert">
+        <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
+            <div style="flex: 1; min-width: 250px;">
+                <h2>Education</h2>
+                <div class="simple-list-item">
+                    <span><strong>컴퓨터공학 학사</strong> (학점은행제)</span>
+                    <span>2016.05 - 2018.08</span>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h2>Certifications</h2>
+                <div class="simple-list-item">
+                    <span>AWS Certified Solutions Architect Associate</span>
+                    <span>2022.08</span>
+                </div>
+                <div class="simple-list-item">
+                    <span>SQL 개발자 (SQLD)</span>
+                    <span>2020.10</span>
+                </div>
+                <div class="simple-list-item">
+                    <span>정보처리기사</span>
+                    <span>2019.08</span>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
-<!-- Javascript files -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.stellar.min.js"></script>
-<script src="assets/js/jquery.sticky.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.9/SmoothScroll.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/jquery.countTo.js"></script>
-<script src="assets/js/jquery.inview.min.js"></script>
-<script src="assets/js/jquery.easypiechart.js"></script>
-<script src="assets/js/jquery.shuffle.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/jquery.fitvids.js"></script>
-<script src="assets/js/scripts.js"></script>
-<script src="assets/js/animated-headline.js"></script>
 </body>
-
 </html>
