@@ -332,14 +332,35 @@
             }
         }
         
+        /* Print Optimization */
         @media print {
+            @page {
+                margin: 1.5cm;
+                size: A4;
+            }
+
             body {
                 background: #fff;
                 padding: 0;
+                margin: 0;
                 max-width: 100%;
+                -webkit-print-color-adjust: exact !important; /* 배경색 강제 출력 (Chrome/Safari) */
+                print-color-adjust: exact !important; /* 배경색 강제 출력 (Firefox) */
             }
-            .experience-item {
+
+            .experience-item, .project-item, .skill-group, .edu-item, .cert-item {
                 break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            h1, h2, h3, h4 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222; /* 인쇄시에도 가독성 유지 */
             }
         }
     </style>
