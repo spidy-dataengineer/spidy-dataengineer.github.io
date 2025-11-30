@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="데이터 엔지니어 박지호의 이력서입니다.">
-    <meta property="og:title" content="박지호 - Data Engineer Resume">
-    <meta property="og:description" content="끊임없이 성장하고 기록하는 데이터 엔지니어 박지호입니다.">
+    <meta name="description" content="데이터 엔지니어 박지호의 이력서">
     <title>박지호 | Data Engineer Resume</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
     <style>
         :root {
-            --primary-color: #2563eb; /* 신뢰감을 주는 블루 계열 */
-            --text-color: #1f2937;
-            --text-light: #6b7280;
-            --bg-color: #f9fafb;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --tag-bg: #eff6ff;
-            --tag-text: #1d4ed8;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --text-light: #888888;
+            --accent-color: #3b82f6; /* 깔끔한 블루 */
+            --bg-color: #ffffff;
+            --section-gap: 3.5rem;
+            --item-gap: 2rem;
         }
 
         * {
@@ -33,90 +28,107 @@
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            padding: 2rem 1rem;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.65;
+            color: var(--text-main);
+            background-color: #fcfcfc; /* 아주 연한 회색 배경 */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--card-bg);
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+            color: var(--text-sub);
         }
 
         /* Header */
         header {
-            margin-bottom: 3rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 2rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #111827;
+            margin-bottom: 4rem;
         }
 
         .role {
-            font-size: 1.25rem;
-            color: var(--primary-color);
+            font-size: 1.2rem;
+            color: var(--text-sub);
             font-weight: 500;
             margin-bottom: 1.5rem;
         }
 
-        .contact-info {
+        .contact-list {
+            list-style: none;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             font-size: 0.95rem;
-            color: var(--text-light);
+            color: var(--text-sub);
         }
 
-        .contact-item {
+        .contact-list li {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .contact-item a {
+        .contact-list i {
+            font-size: 0.9em;
             color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.2s;
         }
 
-        .contact-item a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        /* Sections */
+        /* Section Common */
         section {
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            border-left: 5px solid var(--primary-color);
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-            color: #111827;
+            margin-bottom: var(--section-gap);
         }
 
         /* About */
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #374151;
+        .about-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+        
+        .about-content strong {
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         /* Experience */
         .experience-item {
-            margin-bottom: 2.5rem;
+            margin-bottom: var(--item-gap);
         }
 
         .exp-header {
@@ -127,286 +139,306 @@
             flex-wrap: wrap;
         }
 
-        .company-name {
-            font-size: 1.25rem;
+        .company {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #111827;
         }
 
         .period {
+            font-size: 0.95rem;
             color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-feature-settings: "tnum";
         }
 
-        .job-title {
+        .position {
             font-size: 1rem;
-            color: var(--text-light);
+            color: var(--text-sub);
             margin-bottom: 1rem;
             font-weight: 500;
+            display: block;
         }
 
         .project {
             margin-top: 1.2rem;
-            padding-left: 1rem;
-            border-left: 2px solid #e5e7eb;
+            padding-left: 0.5rem;
         }
 
         .project-title {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .project-period {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            font-weight: 400;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
         }
 
         .project-desc {
             font-size: 0.95rem;
-            color: #4b5563;
-            margin-bottom: 0.5rem;
+            color: var(--text-sub);
+            margin-bottom: 0.6rem;
+            font-style: italic;
         }
 
         .project ul {
-            list-style-type: none;
+            list-style: none;
             padding-left: 0.5rem;
         }
 
         .project li {
             position: relative;
-            padding-left: 1rem;
+            padding-left: 1.2rem;
             margin-bottom: 0.4rem;
             font-size: 0.95rem;
-            color: #4b5563;
+            color: var(--text-sub);
         }
 
         .project li::before {
             content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
             position: absolute;
             left: 0;
+            color: var(--accent-color);
         }
 
-        .tech-stack-inline {
-            font-size: 0.8rem;
-            color: var(--primary-color);
-            background-color: var(--tag-bg);
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            margin-left: 0.5rem;
-            display: inline-block;
+        .tech-stack {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
         }
 
-        strong {
-            color: #111827;
-            font-weight: 600;
+        /* Skills (Detailed List Style) */
+        .skill-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
         }
 
-        .highlight {
-            background-color: rgba(37, 99, 235, 0.1);
-            padding: 0 2px;
-            border-radius: 2px;
+        .skill-category {
+            width: 160px;
+            flex-shrink: 0;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1rem;
+            padding-top: 0.2rem;
         }
 
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: #374151;
-        }
-
-        .skill-tags {
+        .skill-items {
+            flex: 1;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .tag {
-            background-color: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 0.3rem 0.8rem;
-            border-radius: 9999px;
+        .skill-tag {
+            background-color: #f3f4f6;
+            color: #374151;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
             font-size: 0.9rem;
             font-weight: 500;
         }
 
         /* Education & Certs */
-        .simple-list-item {
+        .edu-item, .cert-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.8rem;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .simple-list-item:last-child {
-            border-bottom: none;
+        .edu-name {
+            font-weight: 600;
         }
 
-        /* Print Media Query */
-        @media print {
+        /* Responsive */
+        @media (max-width: 600px) {
             body {
-                background-color: white;
-                padding: 0;
+                padding: 2rem 1.2rem;
             }
-            .container {
-                box-shadow: none;
-                padding: 0;
-                width: 100%;
-                max-width: 100%;
-            }
-            a {
-                text-decoration: none;
-                color: black;
-            }
-            .contact-item a::after {
-                content: " (" attr(href) ")";
-                font-size: 0.8rem;
-                color: #666;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 1.5rem;
-            }
-            .contact-info {
+            
+            h1 { font-size: 2rem; }
+            
+            .skill-group {
                 flex-direction: column;
-                gap: 0.5rem;
             }
+            
+            .skill-category {
+                width: 100%;
+                margin-bottom: 0.5rem;
+                color: var(--accent-color);
+            }
+
             .exp-header {
                 flex-direction: column;
             }
-            .project-title {
-                flex-direction: column;
-                align-items: flex-start;
+        }
+        
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                max-width: 100%;
+            }
+            .skill-tag {
+                border: 1px solid #ddd;
+                background: none;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
     <header>
         <h1>박지호</h1>
         <div class="role">Data Engineer</div>
-        <div class="contact-info">
-            <div class="contact-item">
+        <ul class="contact-list">
+            <li>
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:jiho358896@gmail.com">jiho358896@gmail.com</a>
-            </div>
-            <div class="contact-item">
+            </li>
+            <li>
                 <i class="fas fa-phone"></i>
                 <a href="tel:010-7473-3588">010-7473-3588</a>
-            </div>
-            <div class="contact-item">
+            </li>
+            <li>
                 <i class="fab fa-github"></i>
                 <a href="https://github.com/spidy-dataengineer" target="_blank">github.com/spidy-dataengineer</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-blog"></i>
+            </li>
+            <li>
+                <i class="fas fa-pen"></i>
                 <a href="https://spidyweb.tistory.com" target="_blank">spidyweb.tistory.com</a>
-            </div>
-            <div class="contact-item">
+            </li>
+            <li>
                 <i class="fab fa-linkedin"></i>
                 <a href="https://www.linkedin.com/in/de-jiho" target="_blank">linkedin.com/in/de-jiho</a>
-            </div>
-        </div>
+            </li>
+        </ul>
     </header>
 
     <section id="about">
         <h2>About Me</h2>
-        <div class="about-text">
+        <div class="about-content">
             <p>
-                <strong>더 나은 아키텍처와 프로세스를 고민하는 데이터 엔지니어</strong>입니다. 
+                <strong>더 나은 아키텍처와 프로세스를 끊임없이 고민하는 데이터 엔지니어</strong>입니다.<br>
+                비즈니스 문제를 기술적 관점에서 해결하는 것을 즐기며, 특히 데이터 파이프라인의 <strong>비용 최적화와 처리 속도 개선</strong>에 강점이 있습니다. 
                 Spark와 Airflow를 기반으로 한 대용량 데이터 파이프라인 구축 및 운영 경험을 보유하고 있으며, 
-                On-Premise에서 Cloud(AWS)로의 마이그레이션 프로젝트를 주도적으로 수행했습니다.
+                On-Premise 환경의 데이터를 AWS Cloud로 성공적으로 마이그레이션한 경험이 있습니다.
             </p>
             <p>
-                <strong>"기록은 성장의 밑거름"</strong>이라는 신념으로 약 350개의 기술 포스트를 작성하며 꾸준히 학습한 내용을 공유합니다.
-                비즈니스 문제를 기술적 관점에서 해결하는 것을 즐기며, 특히 데이터 파이프라인의 <strong>비용 최적화와 처리 속도 개선</strong>에 강점이 있습니다.
+                "기록은 성장의 밑거름"이라는 신념으로 약 350개의 기술 포스트를 작성하며 꾸준히 학습한 내용을 공유하고 있습니다.
             </p>
         </div>
     </section>
 
+    <section id="skills">
+        <h2>Skills</h2>
+        
+        <div class="skill-group">
+            <div class="skill-category">Languages</div>
+            <div class="skill-items">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">Big Data & Pipeline</div>
+            <div class="skill-items">
+                <span class="skill-tag">Apache Spark</span>
+                <span class="skill-tag">Apache Airflow</span>
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">Hadoop Eco</span>
+                
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">Cloud & Infra</div>
+            <div class="skill-items">
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">NCP</span>
+                <span class="skill-tag">Kubernetes</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Snowflake</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">Databases</div>
+            <div class="skill-items">
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">MariaDB</span>
+                <span class="skill-tag">Oracle</span>
+                <span class="skill-tag">PostgreSQL</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">DevOps & Tools</div>
+            <div class="skill-items">
+                <span class="skill-tag">Jenkins & Argo</span>
+                <span class="skill-tag">Git/Github/Gitlab</span>
+                <span class="skill-tag">Grafana & Prometheus</span>
+                <span class="skill-tag">Observe</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">Backend</div>
+            <div class="skill-items">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">lambda & API Gateway</span>
+                <span class="skill-tag">Jest</span>
+            </div>
+        </div>
+    </section>
+
     <section id="experience">
-        <h2>Work Experience</h2>
+        <h2>Experience</h2>
 
         <!-- 웅진씽크빅 -->
         <div class="experience-item">
             <div class="exp-header">
-                <span class="company-name">(주)웅진씽크빅</span>
-                <span class="period">2023.05 - 2024.12</span>
+                <div class="company">(주)웅진씽크빅</div>
+                <div class="period">2023.05 - 2024.12</div>
             </div>
-            <div class="job-title">데이터 엔지니어 연구원</div>
+            <span class="position">데이터 엔지니어 연구원</span>
 
-            <!-- Project 1 -->
             <div class="project">
-                <div class="project-title">
-                    ETL 최적화 및 파이프라인 자동화
-                    <span class="project-period">2023.12 - 2024.04</span>
-                </div>
+                <div class="project-title">ETL 최적화 및 파이프라인 자동화</div>
                 <div class="project-desc">Spark Job 최적화 및 수동 업무 자동화를 통한 비용 절감 및 생산성 향상</div>
                 <ul>
-                    <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>90분에서 15분으로 83% 단축</strong> (업무 효율 600% 향상).</li>
-                    <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch 시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong>.</li>
-                    <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong>.</li>
-                    <li>반복되는 파이프라인 코드를 템플릿화하여 개발 속도를 <strong>240% 향상</strong>시키고 코드 일관성 확보.</li>
-                    <li><span class="tech-stack-inline">Python</span> <span class="tech-stack-inline">Spark</span> <span class="tech-stack-inline">AWS EMR</span> <span class="tech-stack-inline">Airflow</span></li>
+                    <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>90분에서 15분으로 83% 단축</strong> (업무 효율 600% 향상)</li>
+                    <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch 시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong></li>
+                    <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong></li>
+                    <li>반복되는 파이프라인 코드를 템플릿화하여 개발 속도를 <strong>240% 향상</strong>시키고 코드 일관성 확보</li>
                 </ul>
+                <div class="tech-stack">Python, Spark, AWS EMR, Airflow</div>
             </div>
 
-            <!-- Project 2 -->
             <div class="project">
-                <div class="project-title">
-                    Airflow 인프라 고도화 및 MSA 전환
-                    <span class="project-period">2024.05 - 2024.06</span>
-                </div>
+                <div class="project-title">Airflow 인프라 고도화 및 MSA 전환</div>
                 <div class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes 기반으로 무중단 마이그레이션</div>
                 <ul>
-                    <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보.</li>
-                    <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong>.</li>
-                    <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보.</li>
-                    <li><span class="tech-stack-inline">Kubernetes</span> <span class="tech-stack-inline">Airflow</span> <span class="tech-stack-inline">AWS RDS</span> <span class="tech-stack-inline">Helm</span></li>
+                    <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보</li>
+                    <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong></li>
+                    <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보</li>
                 </ul>
+                <div class="tech-stack">Kubernetes, Airflow, AWS RDS, Helm</div>
             </div>
 
-            <!-- Project 3 -->
             <div class="project">
-                <div class="project-title">
-                    모니터링 시스템 구축 및 알람 고도화
-                    <span class="project-period">2024.02 - 2024.04</span>
-                </div>
+                <div class="project-title">모니터링 시스템 구축 및 알람 고도화</div>
                 <ul>
-                    <li>Airflow/Kafka Cluster 메트릭을 Grafana 대시보드와 연동하여 <strong>장애 인지 및 대응 시간을 30% 단축</strong>.</li>
-                    <li>데이터 레이크 적재 건수 추이 시각화 및 이상 탐지(Threshold 기반) 알림 시스템 개발 (데이터 누락 탐지율 99%).</li>
-                    <li>Slack 단일 알림을 Email 멀티 채널로 확장하여 에러 전파력 강화.</li>
-                    <li><span class="tech-stack-inline">Grafana</span> <span class="tech-stack-inline">Prometheus</span> <span class="tech-stack-inline">Python</span></li>
+                    <li>Airflow/Kafka Cluster 메트릭을 Grafana 대시보드와 연동하여 <strong>장애 인지 및 대응 시간을 30% 단축</strong></li>
+                    <li>데이터 레이크 적재 건수 추이 시각화 및 이상 탐지(Threshold 기반) 알림 시스템 개발 (데이터 누락 탐지율 99%)</li>
                 </ul>
+                <div class="tech-stack">Grafana, Prometheus, Python</div>
             </div>
-
-            <!-- Project 4 -->
+            
             <div class="project">
-                <div class="project-title">
-                    AICC 데이터 파이프라인 구축
-                    <span class="project-period">2024.06 - 2024.09</span>
-                </div>
+                <div class="project-title">AICC 데이터 파이프라인 구축</div>
                 <ul>
-                    <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축.</li>
-                    <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 및 VOC 건수 15% 감소 기여.</li>
+                    <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축</li>
+                    <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 기여</li>
                 </ul>
             </div>
         </div>
@@ -414,100 +446,56 @@
         <!-- 비투엔 -->
         <div class="experience-item">
             <div class="exp-header">
-                <span class="company-name">(주)비투엔</span>
-                <span class="period">2021.01 - 2023.05</span>
+                <div class="company">(주)비투엔</div>
+                <div class="period">2021.01 - 2023.05</div>
             </div>
-            <div class="job-title">데이터 컨설턴트</div>
+            <span class="position">데이터 컨설턴트</span>
 
             <div class="project">
-                <div class="project-title">
-                    SKB 정보계 Cloud Migration & 최적화
-                    <span class="project-period">2021.04 - 2021.08</span>
-                </div>
+                <div class="project-title">SKB 정보계 Cloud Migration & 최적화</div>
+                <div class="project-desc">On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관 및 최적화</div>
                 <ul>
-                    <li>On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관하는 프로젝트 수행.</li>
-                    <li>HQL 쿼리를 PySpark로 변환하는 모듈을 개발하여 특정 Workload 처리 속도 <strong>최대 5배 향상</strong>.</li>
-                    <li>Oozie 워크플로우를 Airflow DAG로 성공적으로 전환.</li>
-                    <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원.</li>
+                    <li>HQL 쿼리를 PySpark로 변환하는 모듈 개발로 특정 Workload 처리 속도 <strong>최대 5배 향상</strong></li>
+                    <li>Legacy Oozie 워크플로우를 Airflow DAG로 성공적으로 전환 및 운영 안정화</li>
+                    <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원</li>
                 </ul>
+                <div class="tech-stack">Python, Spark, Oozie, Airflow, AWS Redshift</div>
             </div>
 
             <div class="project">
-                <div class="project-title">
-                    전사 데이터 거버넌스 및 표준화 구축 (GS Retail / 고용노동부)
-                </div>
+                <div class="project-title">전사 데이터 거버넌스 및 표준화 구축 (GS Retail / 고용노동부)</div>
                 <ul>
-                    <li>GS Retail 정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립 및 품질 진단 수행.</li>
-                    <li>고용노동부 차세대 시스템 데이터 표준화 중복 검출 모듈 개발 및 품질 정비 리포팅.</li>
-                    <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행.</li>
+                    <li>GS Retail 정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립 및 품질 진단</li>
+                    <li>고용노동부 차세대 시스템 데이터 표준화 중복 검출 모듈 개발 및 품질 정비 리포팅</li>
+                    <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages & Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Scala</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Apache Spark</span>
-                    <span class="tag">Hadoop</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Infra & DevOps</h3>
-                <div class="skill-tags">
-                    <span class="tag">Apache Airflow</span>
-                    <span class="tag">Kubernetes</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">AWS (EMR, S3, RDS, Redshift)</span>
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">Linux</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Etc</h3>
-                <div class="skill-tags">
-                    <span class="tag">Data Governance</span>
-                    <span class="tag">ETL Optimization</span>
-                    <span class="tag">Data Modeling</span>
-                    <span class="tag">Grafana</span>
-                </div>
-            </div>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="edu-item">
+            <div class="edu-name">컴퓨터공학 학사 (학점은행제)</div>
+            <div class="period">2016.05 - 2018.08</div>
         </div>
     </section>
 
-    <section id="education-cert">
-        <div style="display: flex; flex-wrap: wrap; gap: 3rem;">
-            <div style="flex: 1; min-width: 250px;">
-                <h2>Education</h2>
-                <div class="simple-list-item">
-                    <span><strong>컴퓨터공학 학사</strong> (학점은행제)</span>
-                    <span>2016.05 - 2018.08</span>
-                </div>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h2>Certifications</h2>
-                <div class="simple-list-item">
-                    <span>AWS Certified Solutions Architect Associate</span>
-                    <span>2022.08</span>
-                </div>
-                <div class="simple-list-item">
-                    <span>SQL 개발자 (SQLD)</span>
-                    <span>2020.10</span>
-                </div>
-                <div class="simple-list-item">
-                    <span>정보처리기사</span>
-                    <span>2019.08</span>
-                </div>
-            </div>
+    <section id="certificate">
+        <h2>Certificates</h2>
+        <div class="cert-item">
+            <div class="edu-name">AWS Certified Solutions Architect Associate</div>
+            <div class="period">2022.08</div>
+        </div>
+        <div class="cert-item">
+            <div class="edu-name">SQL 개발자 (SQLD)</div>
+            <div class="period">2020.10</div>
+        </div>
+        <div class="cert-item">
+            <div class="edu-name">정보처리기사</div>
+            <div class="period">2019.08</div>
         </div>
     </section>
-</div>
 
 </body>
 </html>
