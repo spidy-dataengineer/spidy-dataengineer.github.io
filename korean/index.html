@@ -329,87 +329,6 @@
             </p>
         </div>
     </section>
-    <section id="experience">
-        <h2>Experience</h2>
-
-        <!-- 웅진씽크빅 -->
-        <div class="experience-item">
-            <div class="exp-header">
-                <div class="company">(주)웅진씽크빅</div>
-                <div class="period">2023.05 - 2024.12</div>
-            </div>
-            <span class="position">데이터 엔지니어 연구원</span>
-
-            <div class="project">
-                <div class="project-title">ETL 최적화 및 파이프라인 자동화</div>
-                <div class="project-desc">Spark Job 최적화 및 수동 업무 자동화를 통한 비용 절감 및 생산성 향상</div>
-                <ul>
-                    <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>90분에서 15분으로 83% 단축</strong> (업무 효율 600% 향상)</li>
-                    <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch 시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong></li>
-                    <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong></li>
-                    <li>반복되는 파이프라인 코드를 템플릿화하여 개발 속도를 <strong>240% 향상</strong>시키고 코드 일관성 확보</li>
-                </ul>
-                <div class="tech-stack">Python, Spark, AWS EMR, Airflow</div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">Airflow 인프라 고도화 및 MSA 전환</div>
-                <div class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes 기반으로 무중단 마이그레이션</div>
-                <ul>
-                    <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보</li>
-                    <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong></li>
-                    <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보</li>
-                </ul>
-                <div class="tech-stack">Kubernetes, Airflow, AWS RDS, Helm</div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">모니터링 시스템 구축 및 알람 고도화</div>
-                <ul>
-                    <li>Airflow/Kafka Cluster 메트릭을 Grafana 대시보드와 연동하여 <strong>장애 인지 및 대응 시간을 30% 단축</strong></li>
-                    <li>데이터 레이크 적재 건수 추이 시각화 및 이상 탐지(Threshold 기반) 알림 시스템 개발 (데이터 누락 탐지율 99%)</li>
-                </ul>
-                <div class="tech-stack">Grafana, Prometheus, Python</div>
-            </div>
-            
-            <div class="project">
-                <div class="project-title">AICC 데이터 파이프라인 구축</div>
-                <ul>
-                    <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축</li>
-                    <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 기여</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 비투엔 -->
-        <div class="experience-item">
-            <div class="exp-header">
-                <div class="company">(주)비투엔</div>
-                <div class="period">2021.01 - 2023.05</div>
-            </div>
-            <span class="position">데이터 컨설턴트</span>
-
-            <div class="project">
-                <div class="project-title">SKB 정보계 Cloud Migration & 최적화</div>
-                <div class="project-desc">On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관 및 최적화</div>
-                <ul>
-                    <li>HQL 쿼리를 PySpark로 변환하는 모듈 개발로 특정 Workload 처리 속도 <strong>최대 5배 향상</strong></li>
-                    <li>Legacy Oozie 워크플로우를 Airflow DAG로 성공적으로 전환 및 운영 안정화</li>
-                    <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원</li>
-                </ul>
-                <div class="tech-stack">Python, Spark, Oozie, Airflow, AWS Redshift</div>
-            </div>
-
-            <div class="project">
-                <div class="project-title">전사 데이터 거버넌스 및 표준화 구축 (GS Retail / 고용노동부)</div>
-                <ul>
-                    <li>GS Retail 정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립 및 품질 진단</li>
-                    <li>고용노동부 차세대 시스템 데이터 표준화 중복 검출 모듈 개발 및 품질 정비 리포팅</li>
-                    <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
         <section id="skills">
         <h2>Skills</h2>
@@ -485,6 +404,119 @@
         </div>
     </section>
     
+    <section id="experience">
+        <h2>Experience</h2>
+
+        <!-- 웅진씽크빅 -->
+        <div class="experience-item">
+            <div class="exp-meta">
+                <span class="company-name">(주)웅진씽크빅</span>
+                <span class="exp-period">2023.05 - 2024.12</span>
+                <span class="exp-role">데이터 엔지니어 연구원</span>
+                <p class="company-desc">에듀테크 및 교육 문화 콘텐츠 기업</p>
+            </div>
+            
+            <div class="exp-content">
+                <div class="project-item">
+                    <h4 class="project-title">ETL 최적화 및 파이프라인 자동화</h4>
+                    <p class="project-desc">Spark Job 최적화 및 수동 업무 자동화를 통한 비용 절감 및 생산성 향상</p>
+                    <ul class="project-details">
+                        <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>90분에서 15분으로 83% 단축</strong> (업무 효율 600% 향상)</li>
+                        <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch 시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong></li>
+                        <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong></li>
+                        <li>반복되는 파이프라인 코드를 템플릿화하여 개발 속도를 <strong>240% 향상</strong>시키고 코드 일관성 확보</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">AWS EMR</span>
+                        <span class="tech-tag">Airflow</span>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">Airflow 인프라 고도화 및 MSA 전환</h4>
+                    <p class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes 기반으로 무중단 마이그레이션</p>
+                    <ul class="project-details">
+                        <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보</li>
+                        <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong></li>
+                        <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">AWS RDS</span>
+                        <span class="tech-tag">Helm</span>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">모니터링 시스템 구축 및 알람 고도화</h4>
+                    <ul class="project-details">
+                        <li>Airflow/Kafka Cluster 메트릭을 Grafana 대시보드와 연동하여 <strong>장애 인지 및 대응 시간을 30% 단축</strong></li>
+                        <li>데이터 레이크 적재 건수 추이 시각화 및 이상 탐지(Threshold 기반) 알림 시스템 개발 (데이터 누락 탐지율 99%)</li>
+                        <li>Slack 단일 알림을 Email 멀티 채널로 확장하여 에러 전파력 강화</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">AICC 데이터 파이프라인 구축</h4>
+                    <ul class="project-details">
+                        <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축</li>
+                        <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 기여</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 비투엔 -->
+        <div class="experience-item">
+            <div class="exp-meta">
+                <span class="company-name">(주)비투엔</span>
+                <span class="exp-period">2021.01 - 2023.05</span>
+                <span class="exp-role">데이터 컨설턴트</span>
+                <p class="company-desc">데이터 전문 컨설팅 및 솔루션 기업</p>
+            </div>
+            
+            <div class="exp-content">
+                <div class="project-item">
+                    <h4 class="project-title">SKB 정보계 Cloud Migration & 최적화</h4>
+                    <p class="project-desc">On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관 및 최적화</p>
+                    <ul class="project-details">
+                        <li>HQL 쿼리를 PySpark로 변환하는 모듈 개발로 특정 Workload 처리 속도 <strong>최대 5배 향상</strong></li>
+                        <li>Legacy Oozie 워크플로우를 Airflow DAG로 성공적으로 전환 및 운영 안정화</li>
+                        <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Oozie</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">AWS Redshift</span>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">전사 데이터 거버넌스 및 표준화 구축 (GS Retail / 고용노동부)</h4>
+                    <ul class="project-details">
+                        <li>GS Retail 정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립 및 품질 진단</li>
+                        <li>고용노동부 차세대 시스템 데이터 표준화 중복 검출 모듈 개발 및 품질 정비 리포팅</li>
+                        <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Data Governance</span>
+                        <span class="tech-tag">Standardization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="education">
         <h2>Education</h2>
         <div class="edu-item">
@@ -500,7 +532,7 @@
             <div class="period">2022.08</div>
         </div>
         <div class="cert-item">
-            <div class="edu-name">SQL 개발자 (SQLD)</div>
+            <div class="edu-name">SQLD</div>
             <div class="period">2020.10</div>
         </div>
         <div class="cert-item">
