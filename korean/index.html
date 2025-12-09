@@ -244,11 +244,20 @@
             border: 1px solid #e9ecef;
         }
 
-        /* Skills (Detailed List Style) */
+        /* Skills (Detailed List Style with Separator) */
         .skill-group {
             margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem; /* 구분선을 위한 여백 확보 */
+            border-bottom: 1px solid var(--border-color); /* 얇은 구분선 추가 */
             display: flex;
             align-items: flex-start;
+        }
+
+        /* 마지막 스킬 그룹은 선 제거 */
+        .skill-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .skill-category {
@@ -301,7 +310,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             body {
                 padding: 2rem 1.2rem;
             }
@@ -323,6 +332,7 @@
             .skill-group {
                 flex-direction: column;
                 margin-bottom: 1.5rem;
+                padding-bottom: 1.5rem;
             }
             
             .skill-category {
@@ -344,13 +354,19 @@
                 padding: 0;
                 margin: 0;
                 max-width: 100%;
-                -webkit-print-color-adjust: exact !important; /* 배경색 강제 출력 (Chrome/Safari) */
-                print-color-adjust: exact !important; /* 배경색 강제 출력 (Firefox) */
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                zoom: 0.85; /* 한 페이지에 더 잘 들어오도록 배율 조정 */
             }
 
             .experience-item, .project-item, .skill-group, .edu-item, .cert-item {
                 break-inside: avoid;
                 page-break-inside: avoid;
+            }
+
+            /* 인쇄 시 스킬 그룹 구분선 스타일 유지 */
+            .skill-group {
+                border-bottom: 1px solid #ddd !important;
             }
 
             h1, h2, h3, h4 {
@@ -360,7 +376,30 @@
 
             a {
                 text-decoration: none;
-                color: #222; /* 인쇄시에도 가독성 유지 */
+                color: #222;
+            }
+            
+            /* 반응형 스타일 무시하고 2단 레이아웃 강제 유지 */
+            .experience-item {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 2rem !important;
+            }
+            
+            .exp-meta {
+                flex: 0 0 220px !important;
+                border-bottom: none !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .skill-group {
+                display: flex !important;
+                flex-direction: row !important;
+            }
+            
+            .skill-category {
+                width: 180px !important;
+                margin-bottom: 0 !important;
             }
         }
     </style>
@@ -413,7 +452,7 @@
         </div>
     </section>
 
-        <section id="skills">
+    <section id="skills">
         <h2>Skills</h2>
         
         <div class="skill-group">
@@ -433,7 +472,6 @@
                 <span class="skill-tag">Apache Airflow</span>
                 <span class="skill-tag">Kafka</span>
                 <span class="skill-tag">Hadoop Eco</span>
-                
             </div>
         </div>
 
@@ -465,7 +503,6 @@
                 <span class="skill-tag">Git/Github/Gitlab</span>
                 <span class="skill-tag">Grafana & Prometheus</span>
                 <span class="skill-tag">Observe</span>
-                
             </div>
         </div>
 
@@ -489,14 +526,58 @@
     
     <section id="experience">
         <h2>Experience</h2>
+        <!-- NSUS Group -->
+        <div class="experience-item">
+            <div class="exp-meta">
+                <span class="company-name">NSUS Group</span>
+                <span class="exp-period">2025.09 - Present</span>
+                <span class="exp-role">데이터 엔지니어</span>
+                <p class="company-desc">DAU 60만 글로벌 1등 온라인 포커, 카지노 플랫폼 기업</p>
+            </div>
+            
+            <div class="exp-content">
+                <div class="project-item">
+                    <h4 class="project-title">데이터 파이프라인 전환</h4>
+                    <p class="project-desc">Fivetran to Airbyte 전환을 통한 Snowflake로의 ETL 비용 절감</p>
+                    <ul class="project-details">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Fivetran</span>
+                        <span class="tech-tag">Airbyte</span>
+                        <span class="tech-tag">DBT</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">EKS</span>
+                    </div>
+                </div>
 
+                <div class="project-item">
+                    <h4 class="project-title">Regulatory Compliance API Development</h4>
+                    <p class="project-desc">전세계의 도박 및 게임 규제 관리 당국의 규제사항에 맞추어 데이터(report)를 제공하는 API 개발</p>
+                    <ul class="project-details">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">AWS Lambda & Gateway & Cloudformation</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Airflow</span>
+                    </div>
+                </div>
+        
         <!-- 웅진씽크빅 -->
         <div class="experience-item">
             <div class="exp-meta">
                 <span class="company-name">(주)웅진씽크빅</span>
                 <span class="exp-period">2023.05 - 2024.12</span>
                 <span class="exp-role">데이터 엔지니어 연구원</span>
-                <p class="company-desc">에듀테크 및 교육 문화 콘텐츠 기업</p>
+                <p class="company-desc">에듀테크 및 교육 문화 콘텐츠 분야 1등 기업</p>
             </div>
             
             <div class="exp-content">
@@ -611,15 +692,15 @@
     <section id="certificate">
         <h2>Certificates</h2>
         <div class="cert-item">
-            <div class="edu-name"><li>AWS Certified Solutions Architect Associate</li></div>
+            <div class="edu-name">AWS Certified Solutions Architect Associate</div>
             <div class="period">2022.08</div>
         </div>
         <div class="cert-item">
-            <div class="edu-name"><li>SQLD</li></div>
+            <div class="edu-name">SQLD</div>
             <div class="period">2020.10</div>
         </div>
         <div class="cert-item">
-            <div class="edu-name"><li>정보처리기사</li></div>
+            <div class="edu-name">정보처리기사</div>
             <div class="period">2019.08</div>
         </div>
     </section>
