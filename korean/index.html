@@ -639,8 +639,16 @@
                 <div class="project-item">
                     <h4 class="project-title">AICC 데이터 파이프라인 구축</h4>
                     <ul class="project-details">
-                        <li>5개 이기종 소스 데이터를 Spark로 통합 정제하여 VOC 분석용 통합 마트 테이블 구축</li>
-                        <li>Airflow 기반 1시간 단위 멱등성 보장 배치 개발로 <strong>VOC 대응 속도 230% 상승</strong> 기여</li>
+                        <li>Spark를 이용하여 5개 이기종 소스 비정형 데이터 통합, 정제하여 VOC 분석용 통합 마트 테이블 설계 및 구축</li>
+                        <li>1시간 단위 VOC Alert 시스템 구축을 통한<strong>VOC 대응 속도 230% 상승</strong> 기여</li>
+						<li>
+							<strong>ML 모델 개발 생산성 향상을 위한 End-to-End 배포 자동화 (CI/CD) 구축</strong>
+							<ul>
+								<li>GitLab - Jenkins - AWS ECR - Airflow(K8s)를 연계한 full-automation 파이프라인 설계</li>
+								<li>수동 이미지 빌드 및 DAG 설정 변경 공수 제거하여 <strong>배포 사이클 80% 단축</strong></li>
+								<li>KubernetesPodOperator 기반의 격리된 학습/추론 환경 구축으로 인프라 운영 안정성 확보</li>
+							</ul>
+						</li>
                     </ul>
                 </div>
             </div>
@@ -651,25 +659,24 @@
             <div class="exp-meta">
                 <span class="company-name">(주)비투엔</span>
                 <span class="exp-period">2021.01 - 2023.05</span>
-                <span class="exp-role">데이터 컨설턴트</span>
+                <span class="exp-role">데이터 컨설턴트 & 엔지니어</span>
                 <p class="company-desc">데이터 전문 컨설팅 및 솔루션 기업</p>
             </div>
             
             <div class="exp-content">
                 <div class="project-item">
                     <h4 class="project-title">SKB 정보계 Cloud Migration & 최적화</h4>
-                    <p class="project-desc">On-Premise(Oracle/Hadoop) 데이터를 AWS Cloud로 이관 및 최적화</p>
+                    <p class="project-desc">On-Premise Data & Pipeline, AWS Cloud 이관 및 최적화</p>
                     <ul class="project-details">
-                        <li>HQL 쿼리를 PySpark로 변환하는 모듈 개발로 특정 Workload 처리 속도 <strong>최대 5배 향상</strong></li>
-                        <li>Legacy Oozie 워크플로우를 Airflow DAG로 성공적으로 전환 및 운영 안정화</li>
-                        <li>Redshift와 Oracle Exadata 성능/비용 비교 분석(PoC)을 통해 클라우드 전환 의사결정 지원</li>
+                        <li>Hive → PySpark 변환 모듈 개발로 특정 Workload 처리 시간 <strong>최대 5배 단축</strong></li>
+                        <li>Spark & EMR 최적화를 통한 비용 평균 36% 절감</li>
+						<li>S3 & glue catalog & athena 분석 환경 구성을 통한 Oracle EXA 대체 환경 구성</li>
                     </ul>
                     <div class="tech-stack-container">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">PySpark</span>
                         <span class="tech-tag">Oozie</span>
                         <span class="tech-tag">Airflow</span>
-                        <span class="tech-tag">AWS Redshift</span>
+                        <span class="tech-tag">AWS S3 & Glue & Athena</span>
                     </div>
                 </div>
 
