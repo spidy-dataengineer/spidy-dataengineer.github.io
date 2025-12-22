@@ -641,9 +641,10 @@
                     <h4 class="project-title">Airflow 인프라 고도화 및 MSA 전환</h4>
                     <p class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes(MSA) 기반으로 무중단 마이그레이션</p>
                     <ul class="project-details">
-		                    <li>K8s 기반 Airflow 리소스 관리 체계 구축으로 인프라 확장성을 확보, 수동 운영 개입 최소화</li>		           
+		                <li>K8s 기반 Airflow 리소스 관리 체계 구축으로 인프라 확장성을 확보, 수동 운영 개입 최소화</li>		           
                         <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험 제거 및 안정성 확보</li>
-                        <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 단축하여 <strong>DAG 배포 속도 15% 향상</strong></li>
+                        <li>GitSync 도입으로 Jenkins 배포 프로세스를 단축하여 <strong>DAG 배포 속도 15% 향상</strong></li>
+						<li>Helm & ECS & jenkins & argo를 통한 infra 자동 배포 및 IaC & code 형상관리 도입</li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Kubernetes</span>
@@ -739,8 +740,7 @@
 										            </li>
 										        </ul>
 										    </li>
-										    
-										</ul>
+					</ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Data Governance</span>
                         <span class="tech-tag">Standardization</span>
