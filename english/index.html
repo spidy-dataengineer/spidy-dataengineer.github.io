@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jiho Park | Data Engineer Resume">
+    <meta name="description" content="Resume of Data Engineer Jiho Park">
     <title>Jiho Park | Data Engineer Resume</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,6 +47,7 @@
             color: var(--accent-color);
         }
 
+        /* Typography */
         h1 {
             font-size: 2.8rem;
             font-weight: 800;
@@ -71,6 +72,13 @@
             margin-bottom: 0.2rem;
         }
 
+        p {
+            margin-bottom: 0.8rem;
+            color: var(--text-sub);
+            word-break: keep-all;
+        }
+
+        /* Header */
         header {
             margin-bottom: 4rem;
         }
@@ -97,10 +105,16 @@
             gap: 0.5rem;
         }
 
+        .contact-list i {
+            color: var(--text-light);
+        }
+
+        /* Section Common */
         section {
             margin-bottom: var(--section-gap);
         }
 
+        /* About */
         .about-content {
             font-size: 1.05rem;
             line-height: 1.8;
@@ -112,6 +126,7 @@
             font-weight: 600;
         }
 
+        /* Experience (New Layout) */
         .experience-item {
             display: flex;
             gap: 2rem;
@@ -126,6 +141,7 @@
             padding-bottom: 0;
         }
 
+        /* Left Side: Meta Info */
         .exp-meta {
             flex: 0 0 220px;
         }
@@ -143,6 +159,7 @@
             color: var(--text-light);
             margin-bottom: 0.5rem;
             display: block;
+            font-feature-settings: "tnum";
         }
 
         .exp-role {
@@ -159,12 +176,17 @@
             line-height: 1.5;
         }
 
+        /* Right Side: Content */
         .exp-content {
             flex: 1;
         }
 
         .project-item {
             margin-bottom: 2rem;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
         }
 
         .project-title {
@@ -178,6 +200,7 @@
             font-size: 0.95rem;
             color: var(--text-sub);
             margin-bottom: 0.8rem;
+            font-style: normal;
         }
 
         .project-details {
@@ -192,6 +215,7 @@
             margin-bottom: 0.4rem;
             font-size: 0.95rem;
             color: #444;
+            line-height: 1.6;
         }
 
         .project-details li::before {
@@ -199,8 +223,43 @@
             position: absolute;
             left: 0;
             color: var(--accent-color);
+            font-weight: bold;
         }
-
+        
+        .project-details .sub-details {
+            list-style: none;
+            margin-top: 0.35rem;
+            margin-left: 0;
+            padding-left: 0;
+            border-left: none;
+        }
+        
+        .project-details .sub-details li {
+            position: relative;
+            padding-left: 0;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.55;
+        }
+        
+        .project-details .sub-details li::before {
+            content: none;
+        }
+        
+        .project-details .sub-details li strong {
+            display: inline;
+            margin-bottom: 0.15rem;
+            color: #111;
+            font-weight: 600;
+        }
+        
+        .project-details .sub-details li .desc::before {
+            content: "- ";
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
         .tech-stack-container {
             display: flex;
             flex-wrap: wrap;
@@ -214,6 +273,7 @@
             background-color: #f1f3f5;
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
+            font-weight: 500;
             border: 1px solid #e9ecef;
         }
 
@@ -222,12 +282,22 @@
             padding-bottom: 1.2rem;
             border-bottom: 1px solid var(--border-color);
             display: flex;
+            align-items: flex-start;
+        }
+
+        .skill-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .skill-category {
             width: 180px;
+            flex-shrink: 0;
             font-weight: 700;
             color: #111;
+            font-size: 1rem;
+            padding-top: 0.2rem;
         }
 
         .skill-items {
@@ -239,9 +309,11 @@
 
         .skill-tag {
             background-color: #fff;
+            color: #333;
             padding: 0.25rem 0.7rem;
             border-radius: 6px;
             font-size: 0.9rem;
+            font-weight: 500;
             border: 1px solid #e0e0e0;
         }
 
@@ -253,11 +325,28 @@
             padding-bottom: 0.5rem;
         }
 
+        .edu-item:last-child, .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .edu-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .edu-period, .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
         @media screen and (max-width: 768px) {
-            .experience-item { flex-direction: column; }
-            .exp-meta { flex: auto; margin-bottom: 1rem; }
-            .skill-group { flex-direction: column; }
-            .skill-category { width: 100%; margin-bottom: 0.5rem; }
+            body { padding: 2rem 1.2rem; }
+            h1 { font-size: 2.2rem; }
+            .experience-item { flex-direction: column; gap: 1rem; }
+            .project-details .sub-details { margin-left: 0.8rem; padding-left: 0.6rem; }
+            .exp-meta { flex: auto; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+            .skill-group { flex-direction: column; margin-bottom: 1.5rem; padding-bottom: 1.5rem; }
+            .skill-category { width: 100%; margin-bottom: 0.5rem; color: var(--accent-color); }
         }
     </style>
 </head>
@@ -267,10 +356,22 @@
         <h1>Jiho Park</h1>
         <div class="role">Data Engineer</div>
         <ul class="contact-list">
-            <li><i class="fas fa-envelope"></i><a href="mailto:jiho358896@gmail.com">jiho358896@gmail.com</a></li>
-            <li><i class="fas fa-phone"></i><span>+82 10-7473-3588</span></li>
-            <li><i class="fas fa-pen"></i><a href="https://spidyweb.tistory.com" target="_blank">Blog</a></li>
-            <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/de-jiho" target="_blank">LinkedIn</a></li>
+            <li>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:jiho358896@gmail.com">jiho358896@gmail.com</a>
+            </li>
+            <li>
+                <i class="fas fa-phone"></i>
+                <a href="tel:010-7473-3588">010-7473-3588</a>
+            </li>
+            <li>
+                <i class="fas fa-pen"></i>
+                <a href="https://spidyweb.tistory.com" target="_blank">spidyweb.tistory.com</a>
+            </li>
+            <li>
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/de-jiho" target="_blank">linkedin.com/in/de-jiho</a>
+            </li>
         </ul>
     </header>
 
@@ -278,10 +379,15 @@
         <h2>About Me</h2>
         <div class="about-content">
             <p>
-                I am a <strong>Data Engineer with 5 years of experience</strong> dedicated to building efficient data architectures. 
-                With a background as an aspiring pro-gamer, I bring a <strong>highly disciplined and fast-learning mindset</strong> to every challenge. 
-                I have specialized in building Data Lakes and DW pipelines for industry leaders, handling <strong>TB/PB scale data</strong> using Spark, Kafka, and Kubernetes. 
-                My focus is always on <strong>automating the mundane</strong> to empower teams and finding the most <strong>cost-effective solutions</strong> to complex engineering problems.
+                <strong>Data Engineer with 5 years of experience</strong> dedicated to architecting superior data systems and optimizing operational workflows.<br>
+                Drawing from my discipline as a former <strong>aspiring pro-gamer</strong>, I uphold high professional standards and excel in fast-paced, adaptive environments.<br>
+                My career as a <strong>Data Consultant and Engineer</strong> has been driven by the conviction that diverse problem-solving experiences are my greatest assets.
+                <br><br>
+                I have specialized in building and managing Data Lakes, DWs, and pipelines across Cloud and On-premise environments for industry leaders. I leverage Spark, Kafka, K8s, and Airflow to process and govern <strong>TB/PB-scale data</strong>.
+                <br><br>
+                I believe the essence of engineering lies in <strong>automating the mundane</strong> and identifying the <strong>single most optimal solution</strong> in terms of both cost and time. I am committed to improving team productivity by proactively developing back-office tools and eliminating inefficient manual processes.
+                <br><br>
+                I am a lifelong learner, having authored over 350 technical blog posts and consistently documenting my technical growth and project learnings in a private knowledge base.
             </p>
         </div>
     </section>
@@ -362,87 +468,111 @@
             </div>
         </div>
     </section>
-
+    
     <section id="experience">
         <h2>Experience</h2>
-        
         <div class="experience-item">
             <div class="exp-meta">
                 <span class="company-name">NSUS Group</span>
                 <span class="exp-period">Sep 2025 - Present</span>
                 <span class="exp-role">Data Engineer</span>
-                <p class="company-desc">World's #1 Online Poker/Casino Platform (600k DAU)</p>
+                <p class="company-desc">A leading global online poker and casino platform with 600k DAU.</p>
             </div>
+            
             <div class="exp-content">
                 <div class="project-item">
-                    <h4 class="project-title">Pipeline Migration & Optimization</h4>
+                    <h4 class="project-title">Data Pipeline Migration</h4>
+                    <p class="project-desc">Migrated from Fivetran to Airbyte to reduce Snowflake ETL costs.</p>
                     <ul class="project-details">
-                        <li>Migrated ETL from Fivetran to Airbyte, reducing operational costs by <strong>over 80%</strong>.</li>
-                        <li>Built a <strong>Pipeline Automation Tool</strong> using Airbyte API and Airflow to minimize manual intervention.</li>
-                        <li>Developed a <strong>Custom MSSQL Connector</strong> for Airbyte to support specific Change Tracking (CT) requirements.</li>
+                        <li>Implemented AS-IS data structures using Airbyte & DBT.</li>
+                        <li>Achieved <strong>over 80% cost reduction</strong> compared to Fivetran by operating Airbyte OSS on EKS.</li>
+                        <li>Developed an <strong>automated pipeline management tool</strong> using Airbyte API & Airflow to minimize manual intervention.</li>
+                        <li>Developed a <strong>custom MSSQL CT (Change Tracking) connector</strong>, which was previously unavailable in Airbyte.</li>
                     </ul>
                     <div class="tech-stack-container">
-                        <span class="tech-tag">Airbyte</span><span class="tech-tag">dbt</span>
-                        <span class="tech-tag">Airflow</span><span class="tech-tag">EKS</span><span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">Fivetran</span>
+                        <span class="tech-tag">Airbyte</span>
+                        <span class="tech-tag">DBT</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">EKS</span>
                     </div>
                 </div>
+
                 <div class="project-item">
-                    <h4 class="project-title">Global Compliance API</h4>
+                    <h4 class="project-title">Regulatory Compliance API Development</h4>
+                    <p class="project-desc">Developed APIs to provide regulatory report data to global gambling and gaming authorities.</p>
                     <ul class="project-details">
-                        <li>Designed a reporting API to meet various international gambling regulations.</li>
-                        <li>Built a <strong>Common Data Mart</strong> to serve reporting data across multiple jurisdictions efficiently.</li>
+                        <li>Designed and developed Data Serving Pipelines tailored to reporting specifications for multiple countries.</li>
+                        <li>Designed and built a common Data Mart for efficient data serving.</li>
                     </ul>
                     <div class="tech-stack-container">
-                        <span class="tech-tag">Lambda</span><span class="tech-tag">API Gateway</span>
-                        <span class="tech-tag">Node.js</span><span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">AWS Lambda & API Gateway</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Airflow</span>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="experience-item">
             <div class="exp-meta">
                 <span class="company-name">Woongjin Thinkbig</span>
                 <span class="exp-period">May 2023 - Dec 2024</span>
                 <span class="exp-role">Data Engineer</span>
-                <p class="company-desc">Leading EdTech company in Korea (130k DAU)</p>
+                <p class="company-desc">No.1 Edutech and cultural content company with 130k DAU.</p>
             </div>
+            
             <div class="exp-content">
                 <div class="project-item">
-                    <h4 class="project-title">ETL & Pipeline Optimization</h4>
+                    <h4 class="project-title">ETL Optimization & Pipeline Automation</h4>
+                    <p class="project-desc">Reduced costs and increased productivity through Spark job optimization and manual task automation.</p>
                     <ul class="project-details">
-                        <li>Redesigned ETL logic for parallel processing, <strong>reducing runtime by 83%</strong>.</li>
-                        <li>Optimized AWS EMR spot instance strategies, saving <strong>55% in cloud costs</strong>.</li>
-                        <li>Reduced recommendation system batch time from <strong>6h 10m to 2h 50m</strong> through query tuning.</li>
+                        <li>Redesigned sequential ETL logic into a parallel processing structure, reducing execution time by an <strong>average of 83%</strong>.</li>
+                        <li>Optimized Spark resources and queries, reducing recommendation system batch jobs from <strong>6h 10m to 2h 50m</strong>.</li>
+                        <li>Achieved a <strong>55% reduction in cloud costs</strong> by optimizing AWS EMR Spot Instance strategies and Auto Scaling policies.</li>
+                        <li>Templatized recurring pipeline code, <strong>improving development speed by 240%</strong> and ensuring code consistency.</li>
                     </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">AWS EMR</span>
+                        <span class="tech-tag">Airflow</span>
+                    </div>
                 </div>
+
                 <div class="project-item">
-                    <h4 class="project-title">Airflow Modernization (MSA)</h4>
+                    <h4 class="project-title">Airflow Infrastructure Modernization & MSA Migration</h4>
+                    <p class="project-desc">Zero-downtime migration of Airflow from a monolithic server to a Kubernetes-based (MSA) environment.</p>
                     <ul class="project-details">
-                        <p>Migrated monolithic Airflow to Kubernetes (EKS), improving infrastructure scalability.</p>
-                        <li>Scaled Airflow infrastructure using Kubernetes, minimizing manual intervention through automated resource management.</li>
-                        <li>Implemented automated CI/CD and IaC pipelines using Jenkins, Argo, and Helm on ECS to ensure consistent environment management and version control.</li>
-                        <li><strong>Improved DAG deployment speed by 15%</strong> by implementing GitSync, streamlining the Jenkins pipeline.</li>
+                        <li>Secured infrastructure scalability and minimized manual operation by establishing a K8s-based Airflow resource management system.</li>
+                        <li>Migrated Local MetaDB to AWS RDS, eliminating data loss risks and ensuring high availability.</li>
+                        <li>Introduced GitSync to streamline Jenkins pipelines, <strong>improving DAG deployment speed by 15%</strong>.</li>
+                        <li>Implemented automated infra deployment and IaC using Helm, ECS, Jenkins, and ArgoCD.</li>
                     </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">AWS RDS</span>
+                        <span class="tech-tag">Helm</span>
+                        <span class="tech-tag">ArgoCD</span>
+                    </div>
                 </div>
+
                 <div class="project-item">
                     <h4 class="project-title">AICC Data Pipeline Development</h4>
-                    <p class="project-desc">AI-driven alerting system for App/System logs and VOC data</p>
+                    <p class="project-desc">AI-driven alerting system for App/System logs and VOC data.</p>
                     <ul class="project-details">
                         <li>Processed and integrated unstructured data from 5 disparate sources using Apache Spark.</li>
-                        <li>Improved <strong>VOC response time by 230%</strong> by building an hourly automated VOC Alerting System.</li>
+                        <li>Contributed to a <strong>230% increase in VOC response speed</strong> by building an hourly VOC Alerting System.</li>
                         <li>
-                            Established <strong>End-to-End CI/CD automation</strong> to boost ML model development productivity.
+                            Built <strong>End-to-End CI/CD automation</strong> to improve ML model development productivity.
                             <ul class="sub-details">
-                                <li> 
-                                    <span class="desc">Designed and built a <strong>full-automation pipeline</strong> integrating GitLab, Jenkins, AWS ECR, and Airflow (on K8s).</span>
-                                </li>
-                                <li>
-                                    <span class="desc"><strong>Reduced deployment cycles by 80%</strong> by eliminating manual image builds and DAG configuration overhead.</span>
-                                </li>
-                                <li>
-                                    <span class="desc">Ensured operational stability by setting up isolated training/inference environments using KubernetesPodOperator.</span>
-                                </li>
+                                <li><span class="desc">Designed a <strong>full-automation pipeline</strong> linking GitLab, Jenkins, AWS ECR, and Airflow (K8s).</span></li>
+                                <li><span class="desc"><strong>Reduced deployment cycles by 80%</strong> by eliminating manual image builds and DAG configuration overhead.</span></li>
+                                <li><span class="desc">Ensured operational stability by building isolated training/inference environments using KubernetesPodOperator.</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -451,7 +581,6 @@
                         <span class="tech-tag">Airflow</span>
                         <span class="tech-tag">Spark</span>
                         <span class="tech-tag">Jenkins</span>
-                        <span class="tech-tag">GitLab</span>
                     </div>
                 </div>
             </div>
@@ -459,35 +588,63 @@
 
         <div class="experience-item">
             <div class="exp-meta">
-                <span class="company-name">B2EN Co., Ltd.</span>
+                <span class="company-name">B2EN</span>
                 <span class="exp-period">Jan 2021 - May 2023</span>
                 <span class="exp-role">Data Consultant & Engineer</span>
-                <p class="company-desc">Data specialized consulting & solution firm</p>
+                <p class="company-desc">A specialized data consulting and solutions firm.</p>
             </div>
+            
             <div class="exp-content">
                 <div class="project-item">
-                    <h4 class="project-title">Cloud Migration (SK Broadband)</h4>
+                    <h4 class="project-title">SK Broadband Cloud Migration & Optimization</h4>
+                    <p class="project-desc">On-premise data & pipeline migration to AWS Cloud with performance tuning.</p>
                     <ul class="project-details">
-                        <li>migrated data & pipelines from On-premise to AWS. <strong>Accelerated workloads by 5x</strong> using PySpark.</li>
-                        <li><strong>Cut infrastructure costs by 36%</strong> by fine-tuning Spark configurations and EMR cluster efficiency.</li>
-                        <li>Architected analysis environments using S3, Glue, and Athena to replace legacy Oracle EXA.</li>
+                        <li>Reduced specific workload processing time by <strong>up to 5x</strong> by developing Hive-to-PySpark conversion modules.</li>
+                        <li>Achieved an <strong>average cost saving of 36%</strong> through Spark & EMR resource optimization.</li>
+                        <li>Configured a high-performance analysis environment using S3, Glue Catalog, and Athena to replace Oracle Exadata.</li>
                     </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Oozie</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">AWS S3 & Glue & Athena</span>
+                    </div>
                 </div>
+
                 <div class="project-item">
-                    <h4 class="project-title">Data Governance (GS Retail)</h4>
+                    <h4 class="project-title">Enterprise Business Metadata Standardization (GS Retail)</h4>
                     <ul class="project-details">
-                        <li>Standardized business metrics and terms to resolve data inconsistency across departments.</li>
-                        <li>Conducted rule-based reporting from various business perspectives to analyze and address data redundancy.</li>
+                        <li>
+                            Business Metadata Integration & Governance Policy Establishment
+                            <ul class="sub-details">
+                                <li><span class="desc">Resolved data interpretation inconsistencies caused by varying business terms and metrics across departments.</span></li>
+                                <li><span class="desc">Integrated <strong>business term and metric definitions</strong> into the enterprise meta-management system and established operational workflows.</span></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            Business-Oriented Data Quality Audit & Reporting
+                            <ul class="sub-details">
+                                <li><span class="desc">Identified critical business-level data duplication issues caused by a lack of a structured product registration system.</span></li>
+                                <li><span class="desc">Performed <strong>multi-dimensional reporting</strong> based on business rules involving product category, sourcing, and pricing.</span></li>
+                                <li><span class="desc">Derived the conclusion for a <strong>Master Data Management (MDM) based Product Master Catalog</strong> through data audit reports.</span></li>
+                            </ul>
+                        </li>
                     </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Data Governance</span>
+                        <span class="tech-tag">Standardization</span>
+                        <span class="tech-tag">Data Quality</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="education">
         <h2>Education</h2>
         <div class="edu-item">
-            <div class="edu-name">Credit Bank System - B.S. in Computer Science</div>
+            <div class="edu-name">B.S. in Computer Science (Academic Credit Bank System)</div>
             <div class="period">May 2016 - Aug 2018</div>
         </div>
     </section>
@@ -496,11 +653,15 @@
         <h2>Certificates</h2>
         <div class="cert-item">
             <div class="edu-name">AWS Certified Solutions Architect – Associate</div>
-            <div class="period">2022</div>
+            <div class="period">Aug 2022</div>
         </div>
         <div class="cert-item">
-            <div class="edu-name">Engineer Information Processing (National)</div>
-            <div class="period">2019</div>
+            <div class="edu-name">SQL Developer (SQLD)</div>
+            <div class="period">Oct 2020</div>
+        </div>
+        <div class="cert-item">
+            <div class="edu-name">Engineer Information Processing</div>
+            <div class="period">Aug 2019</div>
         </div>
     </section>
 
