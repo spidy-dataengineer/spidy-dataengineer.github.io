@@ -640,10 +640,11 @@
 
                 <div class="project-item">
                     <h4 class="project-title">Airflow 인프라 고도화 및 MSA 전환</h4>
-                    <p class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes 기반으로 무중단 마이그레이션</p>
+                    <p class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes(MSA) 기반으로 무중단 마이그레이션</p>
                     <ul class="project-details">
-                        <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험(SPOF) 제거 및 안정성 확보</li>
-                        <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 제거하여 <strong>DAG 배포 속도 15% 향상</strong></li>
+		                    <li>K8s 기반 Airflow 리소스 관리 체계 구축으로 인프라 확장성을 확보, 수동 운영 개입 최소화</li>		           
+                        <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험 제거 및 안정성 확보</li>
+                        <li>Helm Chart 기반 배포 및 GitSync 도입으로 Jenkins 배포 프로세스를 단축하여 <strong>DAG 배포 속도 15% 향상</strong></li>
                         <li>S3 Logging 체계를 구축하여 로그 보존율 100% 달성 및 로컬 디스크 리소스 확보</li>
                     </ul>
                     <div class="tech-stack-container">
@@ -670,17 +671,24 @@
 
                 <div class="project-item">
                     <h4 class="project-title">AICC 데이터 파이프라인 구축</h4>
+                    <p class="project-desc">AI가 접목된 App·System Log, VOC Data Alerting System</p>
                     <ul class="project-details">
-                        <li>Spark를 이용하여 5개 이기종 소스 비정형 데이터 통합, 정제하여 VOC 분석용 통합 마트 테이블 설계 및 구축</li>
+                        <li>Spark를 이용한 5개 이기종 소스 비정형 데이터 정제, 통합 작업</li>
                         <li>1시간 단위 VOC Alert 시스템 구축을 통한<strong>VOC 대응 속도 230% 상승</strong> 기여</li>
-						<li>
-							<strong>ML 모델 개발 생산성 향상을 위한 End-to-End 배포 자동화 (CI/CD) 구축</strong>
-							<ul>
-								<li>GitLab - Jenkins - AWS ECR - Airflow(K8s)를 연계한 full-automation 파이프라인 설계</li>
-								<li>수동 이미지 빌드 및 DAG 설정 변경 공수 제거하여 <strong>배포 사이클 80% 단축</strong></li>
-								<li>KubernetesPodOperator 기반의 격리된 학습/추론 환경 구축으로 인프라 운영 안정성 확보</li>
-							</ul>
-						</li>
+												<li>
+													<strong>ML 모델 개발 생산성 향상을 위한 End-to-End 배포 자동화 (CI/CD) 구축</strong>
+													<ul class="sub-details">
+														<li> 
+																<span class="desc">GitLab - Jenkins - AWS ECR - Airflow(K8s)를 연계한 full-automation 파이프라인 설계</span>
+														</li>
+														<li>
+																<span class="desc">수동 이미지 빌드 및 DAG 설정 변경 공수 제거하여 <strong>배포 사이클 80% 단축</strong></span>
+														</li>
+														<li>
+																<span class="desc">KubernetesPodOperator 기반의 격리된 학습/추론 환경 구축으로 인프라 운영 안정성 확보</span>
+														</li>
+													</ul>
+												</li>
                     </ul>
                 </div>
             </div>
@@ -697,12 +705,12 @@
             
             <div class="exp-content">
                 <div class="project-item">
-                    <h4 class="project-title">SKB 정보계 Cloud Migration & 최적화</h4>
-                    <p class="project-desc">On-Premise Data & Pipeline, AWS Cloud 이관 및 최적화</p>
+                    <h4 class="project-title">SKB 정보계 Cloud Migration & Optimization</h4>
+                    <p class="project-desc">On-Premise Data & Pipeline Migration to AWS Cloud and Optimization</p>
                     <ul class="project-details">
                         <li>Hive → PySpark 변환 모듈 개발로 특정 Workload 처리 시간 <strong>최대 5배 단축</strong></li>
                         <li>Spark & EMR 최적화를 통한 비용 평균 36% 절감</li>
-						<li>S3 & glue catalog & athena 분석 환경 구성을 통한 Oracle EXA 대체 환경 구성</li>
+												<li>S3 & glue catalog & athena 분석 환경 구성을 통한 Oracle EXA 대체 환경 구성</li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">PySpark</span>
@@ -719,16 +727,10 @@
 										        Business meta integration & governance 정책 수립
 										        <ul class="sub-details">
 											          <li>
-										                <strong>AS-IS</strong>
 										                <span class="desc">전사 비즈니스 용어·지표가 조직별로 상이하게 사용되어 데이터 해석 불일치 발생</span>
 										            </li>
 										            <li>
-										                <strong>Action</strong>
-										                <span class="desc">비즈니스 용어 및 지표 정의를 통합하고, 전사 메타관리시스템에 반영 및 운영 프로세스 정의, 사용자 교육을 통한 체계 구축</span>
-										            </li>
-										            <li>
-										                <strong>Impact</strong>  
-										                <span class="desc">전사 비즈니스 용어 및 지표에 대한 정의 통합 및 표준메타시스템 사용 정착</span>
+										                <span class="desc">비즈니스 용어 및 지표 정의 통합, 전사 메타관리시스템에 반영 및 운영 프로세스 정의, 사용자 교육을 통한 체계 구축</span>
 										            </li>
 										        </ul>
 										    </li>
@@ -737,15 +739,12 @@
 												    비즈니스 관점 데이터 품질 검사 및 컨설팅 & 리포팅 수행
 										        <ul class="sub-details">
 											          <li>
-										                <strong>AS-IS</strong>
 										                <span class="desc">상품이 등록되는 체계의 부재로 인한 물리적으로 동일 상품이 비즈니스 관점의 중복 문제 발생</span>
 										            </li>
 										            <li>
-										                <strong>Action</strong>
-										                <span class="desc">상품분류 코드,소싱,가격 및 상품명에 따른 rule base 기반의 다양한 관점에서의 해석 리포팅</span>
+										                <span class="desc">상품분류 코드,소싱,가격 및 상품명에 따른 rule base 기반의 다양한 관점 리포팅</span>
 										            </li>
 										            <li>
-										                <strong>Impact</strong>  
 										                <span class="desc">비즈니스 중복 관점 데이터 리포팅 및 MDM기반의 상품 마스터 카탈로그 구축 필요성 결론 도출</span>
 										            </li>
 										        </ul>
