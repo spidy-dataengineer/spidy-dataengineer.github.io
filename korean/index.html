@@ -226,6 +226,32 @@
             color: var(--accent-color);
             font-weight: bold;
         }
+        
+        .project-details .sub-details {
+				    list-style: none;
+				    margin-top: 0.35rem;
+				    margin-left: 1rem;
+				    padding-left: 0.8rem;
+				    border-left: 2px solid #e5e7eb;
+				}
+				
+				.project-details .sub-details li {
+				    position: relative;
+				    padding-left: 0.9rem;
+				    margin-bottom: 0.25rem;
+				    font-size: 0.9rem;
+				    color: var(--text-sub);
+				    line-height: 1.55;
+				}
+				
+				.project-details .sub-details li::before {
+				    content: "–";
+				    position: absolute;
+				    left: 0;
+				    color: var(--text-light);
+				    font-weight: 600;
+				}
+				
 
         .tech-stack-container {
             display: flex;
@@ -244,11 +270,10 @@
             border: 1px solid #e9ecef;
         }
 
-        /* Skills (Detailed List Style with Separator) */
         .skill-group {
             margin-bottom: 1.2rem;
-            padding-bottom: 1.2rem; /* 구분선을 위한 여백 확보 */
-            border-bottom: 1px solid var(--border-color); /* 얇은 구분선 추가 */
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: flex-start;
         }
@@ -286,7 +311,6 @@
             border: 1px solid #e0e0e0;
         }
 
-        /* Education & Certs */
         .edu-item, .cert-item {
             display: flex;
             justify-content: space-between;
@@ -309,7 +333,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media screen and (max-width: 768px) {
             body {
                 padding: 2rem 1.2rem;
@@ -321,6 +344,11 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+            
+            .project-details .sub-details {
+				        margin-left: 0.8rem;
+				        padding-left: 0.6rem;
+				    }
             
             .exp-meta {
                 flex: auto;
@@ -342,7 +370,6 @@
             }
         }
         
-        /* Print Optimization */
         @media print {
             @page {
                 margin: 1.5cm;
@@ -356,7 +383,7 @@
                 max-width: 100%;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                zoom: 0.85; /* 한 페이지에 더 잘 들어오도록 배율 조정 */
+                zoom: 0.85;
             }
 
             .experience-item, .project-item, .skill-group, .edu-item, .cert-item {
@@ -364,7 +391,6 @@
                 page-break-inside: avoid;
             }
 
-            /* 인쇄 시 스킬 그룹 구분선 스타일 유지 */
             .skill-group {
                 border-bottom: 1px solid #ddd !important;
             }
@@ -379,7 +405,6 @@
                 color: #222;
             }
             
-            /* 반응형 스타일 무시하고 2단 레이아웃 강제 유지 */
             .experience-item {
                 display: flex !important;
                 flex-direction: row !important;
@@ -435,8 +460,7 @@
             <p>
                 <strong>더 나은 아키텍처와 프로세스를 끊임없이 고민하는 5년차 데이터 엔지니어</strong>입니다.<br>
                 <strong>프로게이머</strong>를 준비하던 시절부터 프로답게 일하는 것을 중요시 생각하며, 적응이 빠른 것이 저의 장점입니다.<br>
-				또한, 다양한 경험이 저의 자산이 된다는 신념하에<br>
-                <strong>데이터 컨설턴트, 엔지니어</strong>의 역할로서 다양한 문제를 해결하기 위해 필요한 일을 해왔습니다.<br>
+				또한, 다양한 경험이 저의 자산이 된다는 신념하에 <strong>데이터 컨설턴트, 엔지니어</strong>의 역할로서 다양한 문제를 해결하기 위해 필요한 일을 해왔습니다.<br>
                 <br>
                 각 도메인 분야의 1등 기업에서 Cloud/On-premise 환경의 Data Lake, DW, Data pipeline, AWS Infra 구축 및 관리를 
                 Spark, Kafka, k8s, Airflow 등을 활용하여 TB/PB단위의 데이터 처리/관리를 해왔습니다.<br>
@@ -479,9 +503,9 @@
             <div class="skill-category">Cloud & Infrastructure</div>
             <div class="skill-items">
                 <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Azure</span>
                 <span class="skill-tag">Kubernetes</span>
                 <span class="skill-tag">Docker</span>
-                <span class="skill-tag">NCP</span>
             </div>
         </div>
 
@@ -522,7 +546,7 @@
             <div class="skill-category">AI Engineering</div>
             <div class="skill-items">
                 <span class="skill-tag">AI Agents</span>
-                <span class="skill-tag">MCP (Model Context Protocol)</span>
+                <span class="skill-tag">MCP</span>
             </div>
         </div>
     </section>
@@ -581,8 +605,8 @@
             <div class="exp-meta">
                 <span class="company-name">(주)웅진씽크빅</span>
                 <span class="exp-period">2023.05 - 2024.12</span>
-                <span class="exp-role">데이터 엔지니어 연구원</span>
-                <p class="company-desc">에듀테크 및 교육 문화 콘텐츠 분야 1등 기업</p>
+                <span class="exp-role">데이터 엔지니어</span>
+                <p class="company-desc">DAU 13만 에듀테크 및 교육 문화 콘텐츠 분야 1등 기업</p>
             </div>
             
             <div class="exp-content">
@@ -680,14 +704,28 @@
                 <div class="project-item">
                     <h4 class="project-title">전사 데이터 거버넌스 및 표준화 구축 (GS Retail)</h4>
                     <ul class="project-details">
-                        <li>정보계 및 Cloud 데이터 레이크 대상 거버넌스 정책 수립</li>
-						<li>비즈니스 관점 데이터 품질 검사 및 컨설팅 & 리포팅 수행</li>
-                        <li>비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행으로 카탈로그 시스템 운영 안정화</li>
-                    </ul>
+										    <li>
+										        Business meta integration & governance 정책 수립
+										        <ul class="sub-details">
+												        <li>전사에서 사용하는 비즈니스 용어, 지표를 각 팀의 이해관계에 따라 다르게 사용하는 문제 존재</li>
+										            <li>비즈니스 용어 및 지표에 대한 정의를 통합하고, 전사에서 확인 할 수 있는 메타관리시스템에 적용,운영</li>
+										            <li>표준메타관리시스템 운영 및 사용자 교육을 통한 표준 사용 고착화</li>
+										        </ul>
+										    </li>
+										    <li>
+												    비즈니스 관점 데이터 품질 검사 및 컨설팅 & 리포팅 수행
+										    
+										    </li>
+										    
+										    <li>
+												    비즈니스 용어 표준화 가이드 작성 및 현업 대상 교육 진행으로 카탈로그 시스템 운영 안정화
+										    
+										    </li>
+										</ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Data Governance</span>
                         <span class="tech-tag">Standardization</span>
-					    <span class="tech-tag">Data Quality</span>
+										    <span class="tech-tag">Data Quality</span>
                     </div>
                 </div>
             </div>
