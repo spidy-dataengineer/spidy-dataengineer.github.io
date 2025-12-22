@@ -288,34 +288,77 @@
 
     <section id="skills">
         <h2>Skills</h2>
+        
         <div class="skill-group">
             <div class="skill-category">Languages</div>
             <div class="skill-items">
-                <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
-                <span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
             </div>
         </div>
+
         <div class="skill-group">
             <div class="skill-category">Data Engineering</div>
             <div class="skill-items">
-                <span class="skill-tag">Apache Spark</span><span class="skill-tag">Airflow</span>
-                <span class="skill-tag">Kafka</span><span class="skill-tag">Hadoop Eco</span>
-                <span class="skill-tag">dbt</span><span class="skill-tag">Airbyte</span>
+                <span class="skill-tag">Apache Spark</span>
+                <span class="skill-tag">Apache Airflow</span>
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">Hadoop Eco</span>
+                <span class="skill-tag">DBT</span>
+                <span class="skill-tag">Airbyte</span>
             </div>
         </div>
+
         <div class="skill-group">
-            <div class="skill-category">Cloud & Infra</div>
+            <div class="skill-category">Cloud & Infrastructure</div>
             <div class="skill-items">
-                <span class="skill-tag">AWS</span><span class="skill-tag">Azure</span>
-                <span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span>
-                <span class="skill-tag">Terraform</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Azure</span>
+                <span class="skill-tag">Kubernetes</span>
+                <span class="skill-tag">Docker</span>
             </div>
         </div>
+
         <div class="skill-group">
             <div class="skill-category">Databases</div>
             <div class="skill-items">
-                <span class="skill-tag">Snowflake</span><span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MySQL</span><span class="skill-tag">MariaDB</span>
+                <span class="skill-tag">Snowflake</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">MariaDB</span>
+                <span class="skill-tag">Oracle</span>
+                <span class="skill-tag">PostgreSQL</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">CI/CD & Observability</div>
+            <div class="skill-items">
+                <span class="skill-tag">Jenkins</span>
+                <span class="skill-tag">ArgoCD</span>
+                <span class="skill-tag">Git/Github</span>
+                <span class="skill-tag">Grafana</span>
+                <span class="skill-tag">Prometheus</span>
+                <span class="skill-tag">Observe</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">BackEnd & API</div>
+            <div class="skill-items">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Lambda</span>
+                <span class="skill-tag">API Gateway</span>
+                <span class="skill-tag">Jest</span>
+            </div>
+        </div>
+
+        <div class="skill-group">
+            <div class="skill-category">AI Engineering</div>
+            <div class="skill-items">
+                <span class="skill-tag">AI Agents</span>
+                <span class="skill-tag">MCP</span>
             </div>
         </div>
     </section>
@@ -376,9 +419,40 @@
                 <div class="project-item">
                     <h4 class="project-title">Airflow Modernization (MSA)</h4>
                     <ul class="project-details">
-                        <li>Migrated monolithic Airflow to Kubernetes (EKS), improving infrastructure scalability.</li>
-                        <li>Built an <strong>E2E CI/CD pipeline</strong> for ML models, <strong>cutting deployment cycles by 80%</strong>.</li>
+                        <p>Migrated monolithic Airflow to Kubernetes (EKS), improving infrastructure scalability.</p>
+                        <li>Scaled Airflow infrastructure using Kubernetes, minimizing manual intervention through automated resource management.</li>
+                        <li>Implemented automated CI/CD and IaC pipelines using Jenkins, Argo, and Helm on ECS to ensure consistent environment management and version control.</li>
+                        <li><strong>Improved DAG deployment speed by 15%</strong> by implementing GitSync, streamlining the Jenkins pipeline.</li>
                     </ul>
+                </div>
+                <div class="project-item">
+                    <h4 class="project-title">AICC Data Pipeline Development</h4>
+                    <p class="project-desc">AI-driven alerting system for App/System logs and VOC data</p>
+                    <ul class="project-details">
+                        <li>Processed and integrated unstructured data from 5 disparate sources using Apache Spark.</li>
+                        <li>Improved <strong>VOC response time by 230%</strong> by building an hourly automated VOC Alerting System.</li>
+                        <li>
+                            Established <strong>End-to-End CI/CD automation</strong> to boost ML model development productivity.
+                            <ul class="sub-details">
+                                <li> 
+                                    <span class="desc">Designed and built a <strong>full-automation pipeline</strong> integrating GitLab, Jenkins, AWS ECR, and Airflow (on K8s).</span>
+                                </li>
+                                <li>
+                                    <span class="desc"><strong>Reduced deployment cycles by 80%</strong> by eliminating manual image builds and DAG configuration overhead.</span>
+                                </li>
+                                <li>
+                                    <span class="desc">Ensured operational stability by setting up isolated training/inference environments using KubernetesPodOperator.</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="tech-stack-container">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">GitLab</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -394,7 +468,8 @@
                 <div class="project-item">
                     <h4 class="project-title">Cloud Migration (SK Broadband)</h4>
                     <ul class="project-details">
-                        <li>Led migration from On-premise to AWS. Accelerated workloads by <strong>5x</strong> using PySpark.</li>
+                        <li>migrated data & pipelines from On-premise to AWS. <strong>Accelerated workloads by 5x</strong> using PySpark.</li>
+                        <li><strong>Cut infrastructure costs by 36%</strong> by fine-tuning Spark configurations and EMR cluster efficiency.</li>
                         <li>Architected analysis environments using S3, Glue, and Athena to replace legacy Oracle EXA.</li>
                     </ul>
                 </div>
@@ -402,7 +477,7 @@
                     <h4 class="project-title">Data Governance (GS Retail)</h4>
                     <ul class="project-details">
                         <li>Standardized business metrics and terms to resolve data inconsistency across departments.</li>
-                        <li>Developed a rule-based quality reporting system to eliminate duplicate product data.</li>
+                        <li>Conducted rule-based reporting from various business perspectives to analyze and address data redundancy.</li>
                     </ul>
                 </div>
             </div>
@@ -412,7 +487,7 @@
     <section id="education">
         <h2>Education</h2>
         <div class="edu-item">
-            <div class="edu-name">B.S. in Computer Science</div>
+            <div class="edu-name">Credit Bank System - B.S. in Computer Science</div>
             <div class="period">May 2016 - Aug 2018</div>
         </div>
     </section>
