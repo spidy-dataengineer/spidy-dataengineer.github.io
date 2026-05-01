@@ -475,11 +475,11 @@
                 각 도메인 분야의 1등 기업에서 Cloud/On-premise 환경의 Data Lake, DW, Data pipeline, AWS Infra 구축 및 관리를 
                 Spark, Kafka, k8s, Airflow 등을 활용하여 TB/PB단위의 데이터 처리/관리를 해왔습니다.<br>
                 <br>
-                반복되는 일을 <strong>자동화하고 비효율적인 프로세스를 개선함</strong>으로써 팀 구성원들의 단순/루틴 업무 시간을 줄이기 위해 지속적으로
+                AI를 업무에 적극적으로 활용하여 반복되는 일을 <strong>자동화하고 비효율적인 프로세스를 개선하는 것이 엔지니어의 본질이라 생각하고,</strong> 팀 구성원들의 단순/루틴 업무 시간을 줄이기 위해 지속적으로
                 백오피스 개발에 대한 의견을 나누고 적용하는 업무와, 문제를 해결 할 수 있는 여러 방법 중 비용과 시간면에서
-                <strong>최적의 1가지를 찾아내는 것</strong>이 엔지니어의 본질이라고 생각합니다.<br>
+                <strong>최적의 1가지를 찾아내는 것</strong>이 AI시대인 요즘에 알맞는 일하는 방식이라고 생각합니다.<br>
                 <br>
-                350개의 블로그 글을 포스팅 함과 동시에 개인 Notion에 필요한 기술 학습과 해온 업무들 정리를 꾸준히 정리해오고 있습니다.
+                그 간 기술적인 성장을 위해 350개의 블로그 글을 포스팅 해왔었으며, 동시에 개인 Notion에 필요한 기술 학습과 해온 업무들 정리를 꾸준히 정리해오고 있습니다.
             </p>
         </div>
     </section>
@@ -492,7 +492,6 @@
             <div class="skill-items">
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">SQL</span>
-                <span class="skill-tag">JavaScript</span>
                 <span class="skill-tag">TypeScript</span>
             </div>
         </div>
@@ -524,7 +523,6 @@
             <div class="skill-items">
                 <span class="skill-tag">Snowflake</span>
                 <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">MariaDB</span>
                 <span class="skill-tag">Oracle</span>
                 <span class="skill-tag">PostgreSQL</span>
             </div>
@@ -535,7 +533,7 @@
             <div class="skill-items">
                 <span class="skill-tag">Jenkins</span>
                 <span class="skill-tag">ArgoCD</span>
-                <span class="skill-tag">Git/Github</span>
+                <span class="skill-tag">Git/Github Adction</span>
                 <span class="skill-tag">Grafana</span>
                 <span class="skill-tag">Prometheus</span>
                 <span class="skill-tag">Observe</span>
@@ -546,17 +544,9 @@
             <div class="skill-category">BackEnd & API</div>
             <div class="skill-items">
                 <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Lambda</span>
-                <span class="skill-tag">API Gateway</span>
+                <span class="skill-tag">Lambda + EventBridge + Stepfunction</span>
+                <span class="skill-tag">RESTful API</span>
                 <span class="skill-tag">Jest</span>
-            </div>
-        </div>
-
-        <div class="skill-group">
-            <div class="skill-category">AI Engineering</div>
-            <div class="skill-items">
-                <span class="skill-tag">AI Agents</span>
-                <span class="skill-tag">MCP</span>
             </div>
         </div>
     </section>
@@ -577,10 +567,10 @@
                     <h4 class="project-title">데이터 파이프라인 전환</h4>
                     <p class="project-desc">Fivetran to Airbyte 전환을 통한 Snowflake로의 ETL 비용 절감</p>
                     <ul class="project-details">
-                        <li>Airbyte & DBT를 통한 AS-IS 데이터 구조 동일하게 구현</li>
-                        <li>Airbyte OSS on EKS 운영을 통한 fivetran 대비 비용 <strong>80%이상 절감</strong></li>
+                        <li>Airbyte & DBT를 통한 lake layer 데이터 구조 동일하게 구현</li>
+                        <li>Airbyte OSS on EKS 운영 비용최적화를 통한 fivetran 대비 비용 <strong>80%이상 절감</strong></li>
+						<li>MSSQL CT 및 cursor기반 custom connector 개발</li>
                         <li>Airbyte API & Airflow를 이용한 <strong>Pipeline list 자동 관리 tool개발</strong>을 통한 수동 개입 최소화</li>
-                        <li>Airbyte에는 없던 <strong>MSSQL CT반영 Custom Connector 개발</strong></li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Fivetran</span>
@@ -596,10 +586,12 @@
                     <p class="project-desc">전세계의 도박 및 게임 규제 관리 당국의 규제사항에 맞추어 데이터(report)를 제공하는 API 개발</p>
                     <ul class="project-details">
                         <li>n개국의 Report Spec에 맞는 Data Serving Pipeline 설계·개발</li>
+						<li>잘못 전송된 대규모 과거 데이터의 추적 및 보정(Reconciliation) 처리 로직 구현</li>
+						<li>데이터 정합성 확보 및 재처리(Backfill) 효율 향상을 위한 레거시 코드 전면 리팩토링 및 테이블 설계</li>
                         <li>Data Serving을 위한 공통 Data Mart 설계·구축</li>
                     </ul>
                     <div class="tech-stack-container">
-                        <span class="tech-tag">AWS Lambda & API Gateway & Cloudformation</span>
+                        <span class="tech-tag">AWS Lambda & EventBridge & Stepfunction & API Gateway/span>
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">TypeScript</span>
                         <span class="tech-tag">Spark</span>
@@ -761,6 +753,10 @@
 
     <section id="certificate">
         <h2>Certificates</h2>
+		<div class="cert-item">
+            <div class="edu-name">AWS Certified Data Engineer Associate</div>
+            <div class="period">2026.02</div>
+        </div>
         <div class="cert-item">
             <div class="edu-name">AWS Certified Solutions Architect Associate</div>
             <div class="period">2022.08</div>
