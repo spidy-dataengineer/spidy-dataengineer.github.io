@@ -110,6 +110,16 @@
             color: var(--text-light);
         }
 
+        .contact-detail a {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* 인쇄 시 링크가 죽으므로 URL을 텍스트로 노출 */
+        .print-url {
+            display: none;
+        }
+
         /* Section Common */
         section {
             margin-bottom: var(--section-gap);
@@ -414,7 +424,25 @@
                 text-decoration: none;
                 color: #222;
             }
-            
+
+            .contact-detail a {
+                color: #222 !important;
+            }
+
+            .print-url {
+                display: inline;
+                color: #666;
+                font-size: 0.85em;
+            }
+
+            .print-url::before {
+                content: "(";
+            }
+
+            .print-url::after {
+                content: ")";
+            }
+
             .experience-item {
                 display: flex !important;
                 flex-direction: row !important;
@@ -460,6 +488,11 @@
             <li>
                 <i class="fab fa-linkedin"></i>
                 <a href="https://www.linkedin.com/in/de-jiho" target="_blank">linkedin.com/in/de-jiho</a>
+            </li>
+            <li class="contact-detail">
+                <i class="fas fa-file-lines"></i>
+                <a href="./details/">경력기술서</a>
+                <span class="print-url">spidy-dataengineer.github.io/korean/details/</span>
             </li>
         </ul>
     </header>
