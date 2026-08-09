@@ -406,9 +406,34 @@
                 zoom: 0.85;
             }
 
-            .experience-item, .project-item, .skill-group, .edu-item, .cert-item {
+            /* 회사 블록은 프로젝트 여러 개를 담아 한 페이지를 넘기므로 분할 허용.
+               통째로 묶으면 앞 페이지에 큰 여백이 생긴다 */
+            .experience-item {
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            .project-item, .skill-group, .edu-item, .cert-item {
                 break-inside: avoid;
                 page-break-inside: avoid;
+            }
+
+            section {
+                margin-bottom: 2rem;
+            }
+
+            .experience-item {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .project-item {
+                margin-bottom: 1.2rem;
+            }
+
+            p, li {
+                orphans: 2;
+                widows: 2;
             }
 
             .skill-group {
@@ -502,18 +527,18 @@
         <div class="about-content">
             <p>
                 <strong>더 나은 아키텍처와 프로세스를 끊임없이 고민하는 5년차 데이터 엔지니어</strong>입니다.<br>
-                <strong>프로게이머</strong>를 준비하던 시절부터 프로답게 일하는 것을 중요시 생각하며, 적응이 빠른 것이 저의 장점입니다.<br>
-				또한, 다양한 경험이 저의 자산이 된다는 신념하에 <strong>데이터 컨설턴트, 엔지니어</strong>의 역할로서 다양한 문제를 해결하기 위해 필요한 일을 해왔습니다.<br>
+                <strong>프로게이머</strong>를 준비하던 시절부터 프로답게 일하는 것을 중요하게 생각하며, 적응이 빠른 것이 장점입니다.<br>
+				또한 다양한 경험이 자산이 된다는 신념으로 <strong>데이터 컨설턴트·엔지니어</strong>의 역할에서 문제 해결에 필요한 일을 해왔습니다.<br>
                 <br>
-                각 도메인 분야의 1등 기업에서 Cloud/On-premise 환경의 Data Lake, DW, Data pipeline, AWS Infra 구축 및 관리를 
-                Spark, Kafka, k8s, Airflow 등을 활용하여 TB단위의 데이터 처리/관리를 해왔습니다.<br>
+                각 도메인 1등 기업에서 Cloud/On-premise 환경의 Data Lake · DW · Data Pipeline · AWS Infra를 구축·관리하며,
+                Spark · Kafka · K8s · Airflow로 TB 단위 데이터를 처리해왔습니다.<br>
                 <br>
-                AI의 업무 활용도와 정확성을 높이기 위한 데이터와 프로세스, 거버넌스 등 플랫폼을 구축하는 것이 AI시대에 가장 중요하고 효율적인 업무라고 생각하며, AI Native 한 업무를 진행해오고 있습니다.<br>
-                따라서 AI 시대에서의 데이터엔지니어는 AI를 업무에 적극적으로 활용하여 반복되는 일을 <strong>자동화하고 비효율적인 프로세스를 개선하는 것이 엔지니어의 본질이라 생각합니다.</strong>실제로도 저는 일할 때에 팀 구성원들의 단순/루틴 업무 시간을 줄이기 위해 지속적으로
-                백오피스 개발에 대한 의견을 나누고 적용하는 업무와, 문제를 해결 할 수 있는 여러 방법 중 비용과 시간면에서
-                <strong>최적의 1가지를 찾아내는</strong>일하는 방식을 지향합니다.<br>
+                AI의 업무 활용도와 정확성을 높이기 위한 데이터·프로세스·거버넌스 플랫폼 구축이 AI 시대에 가장 중요하고 효율적인 업무라고 생각하며, AI Native한 업무를 진행해오고 있습니다.<br>
+                AI 시대의 데이터 엔지니어는 AI를 적극 활용해 반복 업무를 <strong>자동화하고 비효율적인 프로세스를 개선하는 것이 본질</strong>이라 생각합니다. 실제로 팀 구성원들의 단순·루틴 업무 시간을 줄이기 위해
+                백오피스 개발 의견을 나누고 적용하는 한편, 문제 해결의 여러 방법 중 비용과 시간 면에서
+                <strong>최적의 1가지를 찾아내는</strong> 방식을 지향합니다.<br>
                 <br>
-                그 간 기술적인 성장을 위해 350개의 블로그 글을 포스팅 해왔었으며, 동시에 개인 Notion에 필요한 기술 학습과 해온 업무들 정리를 꾸준히 정리해오고 있습니다.
+                그간 기술적 성장을 위해 블로그 글 350개를 포스팅했고, 개인 Notion에 기술 학습과 업무 내용을 꾸준히 정리하고 있습니다.
             </p>
         </div>
     </section>
@@ -600,12 +625,12 @@
             <div class="exp-content">
                 <div class="project-item">
                     <h4 class="project-title">데이터 파이프라인 전환</h4>
-                    <p class="project-desc">Fivetran to Airbyte 전환을 통한 Snowflake로의 ETL 비용 절감</p>
+                    <p class="project-desc">Fivetran → Airbyte 전환으로 Snowflake ETL 비용 절감</p>
                     <ul class="project-details">
-                        <li>Airbyte & DBT를 통한 lake layer 데이터 구조 동일 구현</li>
-                        <li>Airbyte OSS on EKS 운영 비용최적화를 통한 fivetran 대비 비용 <strong>약 88% 절감</strong></li>
+                        <li>Airbyte & DBT로 lake layer 데이터 구조 동일 구현</li>
+                        <li>Airbyte OSS on EKS 운영 비용 최적화로 Fivetran 대비 <strong>약 88% 절감</strong></li>
 						<li>MSSQL CT 및 Cursor 기반 custom connector 개발</li>
-                        <li>Airbyte API & Airflow를 이용한 <strong>Pipeline list 자동 관리 tool개발</strong></li>
+                        <li>Airbyte API & Airflow 기반 <strong>Pipeline list 자동 관리 tool 개발</strong></li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Fivetran</span>
@@ -619,11 +644,11 @@
 
                 <div class="project-item">
                     <h4 class="project-title">Regulatory Reporting Data Pipeline</h4>
-                    <p class="project-desc">전세계의 도박 및 게임 규제 관리 당국의 규제사항에 맞추어 데이터(report)를 제공하는 파이프라인 구축</p>
+                    <p class="project-desc">전 세계 도박·게임 규제 당국의 규제사항에 맞춘 데이터(report) 제공 파이프라인 구축</p>
                     <ul class="project-details">
                         <li>10여 개국 Report Spec 대응 Data Serving Pipeline 설계·개발 (<strong>일 100만 건</strong>)</li>
 						<li>잘못 전송된 <strong>과거 리포팅 XML 2년치 1,170만 건 전수 파싱·정합성 검증</strong> 및 보정 처리</li>
-						<li>데이터 정합성 확보 및 재처리 효율 향상을 위한 레거시 코드 전면 리팩토링 및 테이블 설계</li>
+						<li>데이터 정합성·재처리 효율 향상을 위한 레거시 코드 전면 리팩토링 및 테이블 설계</li>
                         <li>Data Serving을 위한 공통 Data Mart 설계·구축</li>
                     </ul>
                     <div class="tech-stack-container">
@@ -638,16 +663,16 @@
 				
 				<div class="project-item">
                     <h4 class="project-title">DataHub 기반 전사 데이터 카탈로그 및 AI 거버넌스 구축</h4>
-                    <p class="project-desc">테이블 수천 개 규모 데이터 자산의 가시성 확보와 신뢰성 향상을 위한 메타데이터 통합 관리 체계 및 자동화 환경 구축</p>
+                    <p class="project-desc">테이블 수천 개 규모 데이터 자산의 가시성·신뢰성 확보를 위한 메타데이터 통합 관리 및 자동화 환경 구축</p>
                     <ul class="project-details">
                         <li>
-                            데이터 자산에 대한 오너십 매핑 및 사용자 권한 제어 체계 수립
+                            데이터 자산 오너십 매핑 및 사용자 권한 제어 체계 수립
                         </li>
-                        <li>Lake부터 최종 BI 계층까지 파이프라인 전반의 데이터 흐름을 추적할 수 있도록 <strong>End-to-End Data Lineage 연동 및 시각화</strong></li>
+                        <li>Lake부터 최종 BI 계층까지 데이터 흐름 추적을 위한 <strong>End-to-End Data Lineage 연동 및 시각화</strong></li>
                         <li>
-                            <strong>LLM 및 MCP를 활용한 메타데이터 자동화 파이프라인 구축</strong>
+                            <strong>LLM · MCP 기반 메타데이터 자동화 파이프라인 구축</strong>
                             <ul class="sub-details">
-                                <li><span class="desc">Claude API와 MCP를 연동하여, <strong>사내 축적 문서(Confluence) 기반으로 테이블·컬럼의 비즈니스 설명을 자동 생성</strong>하고 초안·확정 상태를 구분해 관리</span></li>
+                                <li><span class="desc">Claude API와 MCP를 연동해 <strong>사내 문서(Confluence) 기반으로 테이블·컬럼 비즈니스 설명을 자동 생성</strong>하고 초안·확정 상태를 구분해 관리</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -675,10 +700,10 @@
             <div class="exp-content">
                 <div class="project-item">
                     <h4 class="project-title">ETL 최적화 및 파이프라인 자동화</h4>
-                    <p class="project-desc">Spark Job 최적화 및 수동 업무 자동화를 통한 비용 절감 및 생산성 향상</p>
+                    <p class="project-desc">Spark Job 최적화 및 수동 업무 자동화로 비용 절감·생산성 향상</p>
                     <ul class="project-details">
                         <li>기존 순차적 ETL 로직을 병렬 처리 구조로 재설계하여 수행 시간을 <strong>평균 83% 단축</strong></li>
-                        <li>Spark Job 자원 및 쿼리 튜닝을 통해 개인화 추천 시스템 Batch Job시간을 <strong>6시간 10분에서 2시간 50분으로 단축</strong></li>
+                        <li>Spark Job 자원·쿼리 튜닝으로 개인화 추천 Batch Job <strong>6시간 10분 → 2시간 50분</strong></li>
                         <li>AWS EMR 스팟 인스턴스 활용 전략 및 Auto Scaling 정책 최적화로 <strong>평균 클라우드 비용 55% 절감</strong></li>
                         <li>표준 DAG 생성 모듈 개발로 <strong>신규 DAG 1건 작성 30분 → 5~7분 단축</strong> 및 코드 일관성 확보</li>
                     </ul>
@@ -694,10 +719,10 @@
                     <h4 class="project-title">Airflow 인프라 고도화 및 MSA 전환</h4>
                     <p class="project-desc">단일 서버(Monolithic) 환경의 Airflow를 Kubernetes(MSA) 기반으로 무중단 마이그레이션 — <strong>DAG 150개 · Airflow 2.1.3 → 2.7.2 · 2개월</strong></p>
                     <ul class="project-details">
-		                <li>K8s 기반 Airflow 리소스 관리 체계 구축으로 인프라 확장성을 확보, 수동 운영 개입 최소화</li>		           
+		                <li>K8s 기반 Airflow 리소스 관리 체계 구축으로 인프라 확장성 확보 및 수동 운영 개입 최소화</li>
                         <li>Local MetaDB를 AWS RDS로 이관하여 데이터 유실 위험 제거 및 안정성 확보</li>
                         <li>GitSync 도입으로 <strong>Jenkins 빌드·배포 단계를 제거</strong>, Git 변경이 직접 반영되는 구조로 전환</li>
-						<li>Helm & ECR & jenkins & argo를 통한 infra 자동 배포 및 IaC & code 형상관리 도입</li>
+						<li>Helm · ECR · Jenkins · ArgoCD 기반 infra 자동 배포 및 IaC · 형상관리 도입</li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">Kubernetes</span>
@@ -711,19 +736,19 @@
                     <h4 class="project-title">AICC 데이터 파이프라인 구축</h4>
                     <p class="project-desc">AI가 접목된 App·System Log, VOC Data Alerting System</p>
                     <ul class="project-details">
-                        <li>Spark를 이용한 5개 이기종 소스 비정형 데이터 정제, 통합 작업</li>
-                        <li>VOC 인지 주기를 <strong>일 단위 → 1시간 단위</strong>로 자동화하여 <strong>대응 착수까지 평균 반나절 → 1시간 이내 단축</strong> 기여</li>
+                        <li>Spark 기반 5개 이기종 소스 비정형 데이터 정제·통합</li>
+                        <li>VOC 인지 주기를 <strong>일 단위 → 1시간 단위</strong>로 자동화, <strong>대응 착수까지 평균 반나절 → 1시간 이내</strong> 단축 기여</li>
 												<li>
 													ML 모델 개발 생산성 향상을 위한 <strong>End-to-End 배포 자동화 (CI/CD) 구축</strong>
 													<ul class="sub-details">
 														<li> 
-																<span class="desc">GitLab - Jenkins - AWS ECR - Airflow(K8s)를 연계한 <strong>full-automation 파이프라인 설계·구축</strong></span>
+																<span class="desc">GitLab → Jenkins → AWS ECR → Airflow(K8s) <strong>full-automation 파이프라인 설계·구축</strong></span>
 														</li>
 														<li>
 																<span class="desc">수동 이미지 빌드 및 DAG 설정 변경 공수 제거하여 <strong>배포 사이클 80% 단축</strong></span>
 														</li>
 														<li>
-																<span class="desc">KubernetesPodOperator 기반의 격리된 학습/추론 환경 구축으로 인프라 운영 안정성 확보</span>
+																<span class="desc">KubernetesPodOperator 기반 격리 학습/추론 환경 구축으로 인프라 운영 안정성 확보</span>
 														</li>
 													</ul>
 												</li>
@@ -753,8 +778,8 @@
                     <p class="project-desc">On-Premise Data & Pipeline Migration to AWS Cloud and Optimization</p>
                     <ul class="project-details">
                         <li>Hive → PySpark 변환 모듈 개발로 대형 Workload 처리 시간 <strong>3시간 36분 → 52분 (약 4.2배) 단축</strong></li>
-                        <li>Spark & EMR 최적화를 통한 <strong>비용 평균 36% 절감</strong></li>
-												<li>S3 & glue catalog & athena 분석 환경 구성을 통한 <strong>Oracle EXA 대체 검토 및 cutover 기반 마련</strong></li>
+                        <li>Spark · EMR 최적화로 <strong>비용 평균 36% 절감</strong></li>
+												<li>S3 · Glue Catalog · Athena 분석 환경 구성으로 <strong>Oracle EXA 대체 검토 및 cutover 기반 마련</strong></li>
                     </ul>
                     <div class="tech-stack-container">
                         <span class="tech-tag">PySpark</span>
@@ -771,10 +796,10 @@
 										        홈쇼핑 & 리테일 통합 비즈니스 메타 거버넌스 정책 수립
 										        <ul class="sub-details">
 											        <li>
-										                <span class="desc">도메인 및 조직별로 상이하게 사용되던 용어·지표로 인한 데이터 해석 불일치 및 커뮤니케이션 비용 문제 해결</span>
+										                <span class="desc">도메인·조직별로 상이하던 용어·지표로 인한 데이터 해석 불일치 및 커뮤니케이션 비용 해결</span>
 										            </li>
 										            <li>
-										                <span class="desc"><strong>용어·지표·디멘전 약 500개 표준 정의서 통합 구축</strong>, 메타 관리 시스템 반영 및 운영 가이드라인 배포를 통한 거버넌스 기반 마련</span>
+										                <span class="desc"><strong>용어·지표·디멘전 약 500개 표준 정의서 통합 구축</strong>, 메타 관리 시스템 반영 및 운영 가이드라인 배포로 거버넌스 기반 마련</span>
 										            </li>
 										        </ul>
 										    </li>
@@ -783,13 +808,13 @@
 												    비즈니스 관점 데이터 품질 검사 및 컨설팅 & 리포팅 수행
 										        <ul class="sub-details">
 													<li>
-														<span class="desc">상품 등록 체계 부재로 인해 발생하는 물리적/비즈니스적 중복 상품 문제 식별</span>
+														<span class="desc">상품 등록 체계 부재로 발생하는 물리적/비즈니스적 중복 상품 식별</span>
 													</li>
 													<li>
-														<span class="desc">상품분류 코드, 소싱, 가격, 상품명 등 복합 속성을 활용한 Rule-based 프로파일링으로 <strong>수천만 row 대상 중복·오매핑 약 70% 식별</strong></span>
+														<span class="desc">상품분류 코드·소싱·가격·상품명 등 복합 속성 기반 Rule-based 프로파일링으로 <strong>수천만 row 대상 중복·오매핑 약 70% 식별</strong></span>
 													</li>
 													<li>
-														<span class="desc">비즈니스 중복 데이터의 심각성을 가시화하여, 전사 데이터 정합성을 위한 <strong>통합 상품 마스터 카탈로그(MDM) 구축의 필요성 및 방향성 도출</strong></span>
+														<span class="desc">중복 데이터의 심각성을 가시화하여 전사 데이터 정합성을 위한 <strong>통합 상품 마스터 카탈로그(MDM) 구축 필요성 및 방향성 도출</strong></span>
 													</li>
 										        </ul>
 										    </li>

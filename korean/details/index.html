@@ -411,8 +411,24 @@
             }
 
             .project {
-                margin-bottom: 2rem;
-                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+
+            section {
+                margin-bottom: 1.5rem;
+            }
+
+            .company {
+                margin-bottom: 1.5rem;
+            }
+
+            .block {
+                margin-bottom: 0.9rem;
+            }
+
+            .project-flow, .project-meta {
+                margin-bottom: 0.9rem;
             }
 
             a {
@@ -477,7 +493,7 @@
 
             <!-- ① Airbyte -->
             <article class="project" id="airbyte-migration">
-                <h3 class="project-title">Fivetran → Airbyte 자체 운영 전환을 통한 ETL 비용 구조 재설계</h3>
+                <h3 class="project-title">Fivetran → Airbyte 자체 운영 전환으로 ETL 비용 구조 재설계</h3>
                 <ul class="project-meta">
                     <li><span class="meta-label">기간</span>2025.10 - 2026.07 (10개월)</li>
                     <li><span class="meta-label">역할</span>2인 중 전환 자동화 모듈 개발 · Airflow on K8s 구축 · EKS 자원 관리</li>
@@ -508,10 +524,10 @@
                         <li>
                             <strong>Airbyte OSS 자체 운영(EKS)</strong> — 처리량 비례 종량 과금에서 서버 비용만 발생하는
                             고정비 구조로 전환. 운영 부담을 팀이 흡수하는 대신
-                            데이터 증가가 비용 증가로 직결되지 않는 구조를 확보
+                            데이터 증가와 비용의 연동을 끊음
                         </li>
                         <li>
-                            <strong>Airbyte 산출물을 DBT로 재변환</strong> — Airbyte는 원천 데이터 타입이
+                            <strong>Airbyte 산출물 DBT 재변환</strong> — Airbyte는 원천 데이터 타입이
                             의도한 대로 매핑되지 않았다. 그대로 적재하면 다운스트림 컬럼 정의를 전부 고쳐야 하므로,
                             DBT 계층에서 <strong>Fivetran과 동일 형식으로 맞춰 다운스트림 수정 없이 전환</strong>
                         </li>
@@ -611,17 +627,17 @@
                     <div class="block-title">기술적 판단</div>
                     <ul>
                         <li>
-                            <strong>전송 포맷은 못 바꾸므로, 조회 가능한 형태를 원본으로 둔다</strong> —
+                            <strong>못 바꾸는 포맷 대신 조회 가능한 형태를 원본으로</strong> —
                             SOAP 규격상 XML 전송이 강제되어 포맷 자체는 고정이었다.
                             대신 <strong>전송될 내용을 JSON으로 테이블에 보관하고 XML은 그로부터 생성되는 파생물</strong>로 두어,
                             이력 조회와 재전송이 같은 소스에서 이뤄지도록 설계
                         </li>
                         <li>
-                            <strong>실시간 · 준실시간 경로를 단일 테이블로 통합</strong> — 두 경로가 나뉘어 있어
+                            <strong>실시간 · 준실시간 경로 단일 테이블 통합</strong> — 두 경로가 나뉘어 있어
                             과거 이력을 한 번에 조회할 수 없었으므로, 이력 추적과 재처리의 기준점을 하나로 통합
                         </li>
                         <li>
-                            <strong>전달 채널은 국가별로 분리하되 데이터는 공통 마트에서 공급</strong> —
+                            <strong>전달 채널은 국가별 분리, 데이터는 공통 마트 공급</strong> —
                             리포트 스펙은 다르지만 player status · wallet 등 기반 도메인은 공유하므로,
                             공통 마트 위에서 국가별 스펙으로 변환.
                             네덜란드·스웨덴이 <strong>우리가 데이터를 내보내는 방식</strong>인 것과 달리
@@ -639,7 +655,7 @@
                             예외 처리 누락, Kafka 소스 오류, 비동기 소비로 인한 순서 미보장이 복합 작용
                         </li>
                         <li>
-                            <strong>진단의 난점</strong> — 정확한 확인은 <strong>실제 전송된 XML을 봐야</strong> 가능한데,
+                            <strong>진단 난점</strong> — 정확한 확인은 <strong>실제 전송된 XML을 봐야</strong> 가능한데,
                             그 XML이 <strong>1파일 1record 단위로 S3 단일 폴더에 수천만 개</strong> 파티셔닝 없이 쌓여 있어
                             특정 구간만 보려 해도 전수 스캔이 필요했다
                         </li>
@@ -647,7 +663,7 @@
                             <strong>실행 환경 판단</strong> — Glue는 소형 파일을 한 파티션으로 묶어 읽는 기능이 있어 유리했으나
                             <strong>XML 리더가 네임스페이스 제거를 지원하지 않아</strong> 태그 정제가 불가능했다.
                             파싱이 선행 조건이므로 <strong>소형 파일 최적화를 포기하고 EMR Serverless에서
-                            파싱을 직접 제어하는 쪽을 선택</strong>
+                            파싱을 직접 제어</strong>
                         </li>
                         <li>
                             그 대가로 Glue가 자동 처리하던 소형 파일 대응을 직접 구성 —
@@ -659,7 +675,7 @@
                             경로 단위 로드를 유지 → <strong>조사 대상 2년치 1,170만 건 전수 파싱 약 2시간</strong>
                         </li>
                         <li>
-                            <strong>재조사 가능한 구조로 전환</strong> — 리포트 유형 · 기준일자 2단계 파티셔닝 Parquet 적재,
+                            <strong>재조사 가능한 구조 전환</strong> — 리포트 유형 · 기준일자 2단계 파티셔닝 Parquet 적재,
                             RDB 적재 후 최신 전송분만 남기도록 중복 제거 및 인덱스 구성, Snowflake 주기 적재.
                             원천과 송신 데이터를 대조해 오류를 식별하고 Replacement · Cancellation으로 정정
                         </li>
@@ -778,13 +794,13 @@
                             <strong>확정 권한은 데이터를 만드는 팀에</strong> 두어 분리
                         </li>
                         <li>
-                            <strong>초안과 확정을 구분 표시하고 그 상태를 AI도 확인 가능하게</strong> —
+                            <strong>초안·확정 구분 표시, 상태는 AI도 확인 가능하게</strong> —
                             검수 완료 후 공개하면 카탈로그가 오래 비고, 구분 없이 공개하면 미검수 정의가 기준으로 오인된다.
                             상태를 함께 노출해 초안도 활용하되 신뢰 수준을 판단할 수 있게 하고
                             확정 범위를 점진 확대하는 방식을 선택
                         </li>
                         <li>
-                            <strong>카탈로그를 문서가 아니라 도구가 조회하는 소스로 규정</strong> —
+                            <strong>카탈로그는 문서가 아니라 도구가 조회하는 소스</strong> —
                             MCP로 AI가 질의 시점에 정의를 직접 참조하도록 연결.
                             <strong>단일 진실 원천은 DataHub로 고정</strong>하고
                             Snowflake 컬럼 comment는 그 정의를 반영한 결과로 두어 다중 관리로 어긋나는 상황을 차단
@@ -912,8 +928,8 @@
                             자원 증설 대신 상호 의존이 없는 작업을 TaskGroup 병렬 구조로 전환
                         </li>
                         <li>
-                            <strong>상시 가동 EMR 제거로 비용에 접근</strong> — 클러스터가 24시간 떠 있으면
-                            튜닝으로 줄일 수 있는 폭에 한계가 있다고 보고, 상시 클러스터를 없애고
+                            <strong>상시 가동 EMR 제거</strong> — 클러스터가 24시간 떠 있으면
+                            튜닝으로 줄일 수 있는 폭에 한계가 있다고 보고,
                             <strong>워크로드 특성에 따라 실행 환경을 분리</strong>
                             (작은 것 → EMR Serverless / 큰 것 → EMR on EC2 스케줄 기동 / 지연 허용 → Spot)
                         </li>
@@ -1141,9 +1157,9 @@
                     <div class="block-title">기술적 판단</div>
                     <ul>
                         <li>
-                            <strong>처리 도구를 Spark로 통일</strong> — VOC는 데이터량이 적어 Spark가 비용 면에서
-                            효율적인 선택은 아니었으나, 소스별로 다른 처리 도구를 두면 운영·유지보수 부담이 누적된다고
-                            판단해 <strong>비용 비효율을 감수하고 전 소스를 Spark / SparkSQL로 통합</strong>
+                            <strong>처리 도구 Spark 통일</strong> — VOC는 데이터량이 적어 Spark가 비용 면에서
+                            효율적인 선택은 아니었으나, 소스별로 다른 도구를 두면 운영·유지보수 부담이 누적된다고
+                            판단해 <strong>비용 비효율을 감수하고 전 소스 통합</strong>
                         </li>
                         <li>
                             <strong>통합 마트 스키마 설계</strong> — 공통 필드는 고정 컬럼으로 두고
@@ -1263,7 +1279,7 @@
                             유지보수 진입장벽이 낮아 PySpark로 선정
                         </li>
                         <li>
-                            <strong>전환 경로를 단정하지 않고 두 가지를 구현해 실측 비교</strong> —
+                            <strong>전환 경로 단정 없이 두 가지 구현해 실측 비교</strong> —
                             (a) DataFrame API 전면 재작성(공수는 크지만 최적화 여지가 큼),
                             (b) HQL을 입력받아 SparkSQL 실행 코드를 <strong>자동 생성하는 변환 모듈</strong>.
                             실측 결과 <strong>둘이 동일한 실행 계획으로 최적화되어 성능 차이가 없음</strong>을 확인하고,
@@ -1279,7 +1295,7 @@
                             특정 타입의 회수가 잡 전체 실패로 번지지 않도록 구성
                         </li>
                         <li>
-                            <strong>출력 포맷을 Parquet(Snappy)로 전환</strong> — Hive는 ORC, Spark는 Parquet에
+                            <strong>출력 포맷 Parquet(Snappy) 전환</strong> — Hive는 ORC, Spark는 Parquet에
                             최적화되어 있어 변경했고, 이 적재 구조가 이후 Athena 분석 환경의 기반이 됨
                         </li>
                     </ul>
@@ -1294,7 +1310,7 @@
                             기존 HQL을 그대로 입력하면 PySpark Job으로 수행되어 재작성 공수 없이 엔진 교체 가능
                         </li>
                         <li>
-                            <strong>Oozie 워크플로 35~40개를 Airflow로 선제 전환</strong> —
+                            <strong>Oozie 워크플로 35~40개 Airflow 선제 전환</strong> —
                             XML·UI 의존 구성을 Python DAG 코드로 이관해 형상관리 가능한 형태로 전환하면서,
                             같은 의미(당일 · D-1 · D-2)를 다른 이름으로 쓰던 <strong>실행 변수를 표준 이름으로 통일</strong>
                         </li>
@@ -1397,7 +1413,7 @@
                     <ul>
                         <li>부서별로 상이하게 사용되던 용어·지표를 수집하고 정의가 충돌하는 항목을 식별</li>
                         <li>
-                            <strong>표준화 협의체를 직접 주관</strong> — 이해관계가 걸린 부서를 모아 공통 정의안을 조율하고
+                            <strong>표준화 협의체 직접 주관</strong> — 이해관계가 걸린 부서를 모아 공통 정의안을 조율하고
                             각 부서 및 부서장 확인 절차로 주기적 합의 확보.
                             표준과 다른 사용 요구는 배제하지 않고 <strong>사유와 상위 조직장 확인을 받아 예외 운영</strong>하도록
                             조율하여 표준화 진행과 현업 요구를 동시에 충족
@@ -1414,7 +1430,7 @@
                     <ul>
                         <li>기본 유효성 검증(PK · 필수값 · 형식 · 도메인) 수행</li>
                         <li>
-                            <strong>상품 중복 진단 — 판정 기준을 3단 레벨로 설계</strong>
+                            <strong>상품 중복 진단 — 판정 기준 3단 레벨 설계</strong>
                             <ul>
                                 <li>
                                     LV1 · 정규화 상품명 — EC 노출명을 우선 적용(미입력 시 상품명 대체)해
