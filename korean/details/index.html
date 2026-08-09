@@ -511,8 +511,8 @@
                             데이터 증가가 비용 증가로 직결되지 않는 구조를 확보
                         </li>
                         <li>
-                            <strong>Airbyte 산출물을 DBT로 재변환</strong> — Airbyte는 타입 매핑이 부정확해
-                            숫자·날짜 컬럼이 string으로 생성됐다. 그대로 적재하면 다운스트림 컬럼 정의를 전부 고쳐야 하므로,
+                            <strong>Airbyte 산출물을 DBT로 재변환</strong> — Airbyte는 원천 데이터 타입이
+                            의도한 대로 매핑되지 않았다. 그대로 적재하면 다운스트림 컬럼 정의를 전부 고쳐야 하므로,
                             DBT 계층에서 <strong>Fivetran과 동일 형식으로 맞춰 다운스트림 수정 없이 전환</strong>
                         </li>
                     </ul>
@@ -588,7 +588,7 @@
                     Snowflake 규제 대응 Mart → Tableau (규제 당국이 직접 조회)
                     <br>
                     <span class="flow-label">필리핀</span>
-                    API Gateway + Lambda → Snowflake Mart → JSON 응답 (규제 당국 Pull 요청 시)
+                    API Gateway + Lambda → Snowflake Mart → JSON 응답 (규제 당국이 필요 시 직접 조회)
                 </p>
 
                 <div class="block">
@@ -623,7 +623,9 @@
                         <li>
                             <strong>전달 채널은 국가별로 분리하되 데이터는 공통 마트에서 공급</strong> —
                             리포트 스펙은 다르지만 player status · wallet 등 기반 도메인은 공유하므로,
-                            공통 마트 위에서 국가별 스펙으로 변환. 필리핀은 <strong>비정기 Pull이고 실시간 요건이 없어</strong>
+                            공통 마트 위에서 국가별 스펙으로 변환.
+                            네덜란드·스웨덴이 <strong>우리가 데이터를 내보내는 방식</strong>인 것과 달리
+                            필리핀은 <strong>규제 당국이 필요할 때 직접 조회해 가는 방식</strong>이고 실시간 요건도 없어,
                             상시 서버 대신 Serverless로 구성해 대기 비용 제거
                         </li>
                     </ul>
@@ -638,8 +640,8 @@
                         </li>
                         <li>
                             <strong>진단의 난점</strong> — 정확한 확인은 <strong>실제 전송된 XML을 봐야</strong> 가능한데,
-                            그 XML이 <strong>1파일 1record 단위로 S3 단일 폴더에 1,170만 개</strong> 파티셔닝 없이 쌓여 있어
-                            특정 구간 조회에도 전수 스캔이 필요했다
+                            그 XML이 <strong>1파일 1record 단위로 S3 단일 폴더에 수천만 개</strong> 파티셔닝 없이 쌓여 있어
+                            특정 구간만 보려 해도 전수 스캔이 필요했다
                         </li>
                         <li>
                             <strong>실행 환경 판단</strong> — Glue는 소형 파일을 한 파티션으로 묶어 읽는 기능이 있어 유리했으나
@@ -652,8 +654,9 @@
                             <strong>driver 단독 리스팅으로 메모리 부족이 반복</strong>되어 리스팅을 worker에 분산하고
                             입력 파티션 크기를 축소. root tag 네임스페이스는
                             <strong>S3 객체 앞부분만 Range 요청으로 읽어</strong> 종류를 수집한 뒤 태그별로 읽어 병합.
-                            manifest 분할 전달도 검토했으나 <strong>실측 결과 파일별 메타데이터 조회가 발생해 오히려 느려</strong>
-                            직접 경로 로드를 유지 → <strong>1,170만 건 전수 파싱 약 2시간</strong>
+                            파일 경로를 미리 수집해 목록으로 넘기는 방식도 검토했으나,
+                            <strong>경로를 명시하면 파일마다 크기를 개별 조회해야 해 실측 결과 오히려 느려</strong>
+                            경로 단위 로드를 유지 → <strong>조사 대상 2년치 1,170만 건 전수 파싱 약 2시간</strong>
                         </li>
                         <li>
                             <strong>재조사 가능한 구조로 전환</strong> — 리포트 유형 · 기준일자 2단계 파티셔닝 Parquet 적재,
@@ -679,7 +682,7 @@
                         <li>
                             <strong>스웨덴</strong> — Snowflake 규제 스펙 Mart 구축 및 Tableau로 규제 당국 직접 조회 구성
                             (player status · 게임 데이터 · 수익 · 중독 방지 정책).
-                            <strong>필리핀</strong> — Pull 방식 RESTful API를 TypeScript로 개발,
+                            <strong>필리핀</strong> — 규제 당국이 직접 조회하는 RESTful API를 TypeScript로 개발,
                             API Gateway + Lambda Serverless 및 파라미터 기반 JSON 서빙
                         </li>
                         <li>
@@ -693,7 +696,7 @@
                     <div class="block-title">성과 및 한계</div>
                     <ul>
                         <li>
-                            <strong>과거 전송 XML 1,170만 건 전수 파싱·적재</strong>로 정합성 검증 수행,
+                            <strong>과거 전송 XML 2년치 1,170만 건 전수 파싱·적재</strong>로 정합성 검증 수행,
                             오류 데이터 식별 및 정정 완료
                         </li>
                         <li>
@@ -704,8 +707,10 @@
                         <li>공통 Mart로 국가별 리포트 간 기준 데이터 불일치 요인 제거</li>
                         <li>
                             <strong>한계</strong> — 전송 포맷과 중간 매개자 구간은 규제 당국이 정한 규격이라 변경할 수 없다.
-                            매개자 설정 오류로 전송이 깨지는 상황 자체는 여전히 발생 가능하며,
-                            <strong>이번 작업은 그 경우의 재전송·정정을 빠르게 하는 구조를 만든 것이지 원인을 제거한 것은 아니다</strong>
+                            또한 기능이 계속 추가되는 서비스 특성상 신규 피처나 코드 결함,
+                            매개자 설정 오류로 <strong>잘못된 데이터가 나가는 상황 자체를 없앨 수는 없다.</strong>
+                            이번 작업은 그때 <strong>무엇을 보냈는지 즉시 확인하고 재전송·정정할 수 있는 구조</strong>를
+                            만든 것이지 오류 발생 원인을 제거한 것은 아니다
                         </li>
                     </ul>
                 </div>
@@ -737,7 +742,7 @@
                 </ul>
 
                 <p class="project-flow">
-                    <span class="flow-label">리니지</span>
+                    <span class="flow-label">Lineage</span>
                     Lake → Warehouse → Mart → Tableau (End-to-End 연동 및 시각화)
                     <br>
                     <span class="flow-label">메타데이터</span>
@@ -785,7 +790,7 @@
                             Snowflake 컬럼 comment는 그 정의를 반영한 결과로 두어 다중 관리로 어긋나는 상황을 차단
                         </li>
                         <li>
-                            <strong>리니지 시작점은 Lake</strong> — Lake는 소스 RDB를 그대로 적재한 계층이고
+                            <strong>Lineage 시작점은 Lake</strong> — Lake는 소스 RDB를 그대로 적재한 계층이고
                             소스 스키마 변경은 수집 파이프라인에서 이미 확인되므로 RDB까지 확장할 실익이 낮다고 판단
                         </li>
                     </ul>
@@ -795,7 +800,7 @@
                     <div class="block-title">수행 내용</div>
                     <ul>
                         <li>
-                            <strong>End-to-End 리니지 연동 및 시각화</strong> — Lake · Warehouse · Mart를 거쳐
+                            <strong>End-to-End Lineage 연동 및 시각화</strong> — Lake · Warehouse · Mart를 거쳐
                             최종 BI 계층(Tableau)까지 연결하여 장애·변경 시 downstream 추적 가능하도록 구성
                         </li>
                         <li>
@@ -822,7 +827,7 @@
                     <ul>
                         <li>
                             팀마다 달랐던 용어·컬럼 정의를 <strong>오너가 확정한 단일 기준으로 정리</strong>하고
-                            변경 시 승인을 거치는 운영 체계 확립, 리니지로 장애·변경 영향 범위를 사전 파악 가능하도록 전환
+                            변경 시 승인을 거치는 운영 체계 확립, Lineage로 장애·변경 영향 범위를 사전 파악 가능하도록 전환
                         </li>
                         <li>
                             <strong>AI가 추론에 의존하던 정의를 메타데이터 참조로 대체</strong> —
@@ -833,8 +838,10 @@
                             점진적으로 끌어올리는 운영 방식</strong> 확립
                         </li>
                         <li>
-                            <strong>한계</strong> — 확정은 각 팀의 검수 속도에 달려 있어 미검수 영역은 초안으로 남는다.
-                            상태 표시로 오인 위험은 차단했으나 확정 비율을 높이는 것은 계속 진행 중인 과제다
+                            <strong>한계</strong> — 초안 생성은 자동화했지만 확정은 팀마다 검수 속도가 달라 진행 편차가 컸다.
+                            한 번 확정하면 끝나는 것도 아니어서, 정의가 바뀌면 다시 검수를 거쳐 반영해야 했다.
+                            <strong>초안에서 확정으로 넘어가는 구간은 자동화로 대체할 수 없고
+                            운영 단계에서 사람이 주기적으로 돌아야 하는 영역</strong>이었다
                         </li>
                     </ul>
                 </div>
@@ -867,25 +874,26 @@
 
                 <p class="project-flow">
                     <span class="flow-label">전환 전</span>
-                    순차 실행 · 종료 시각 기반 배치 의존 · 수동 적재(TSV/Parquet 변환 · Glue Crawler) · DB Procedure 기반 ETL 로직
+                    직렬 실행 · 종료 시각 기반 배치 의존 · 수동 적재(TSV/Parquet 변환 · Glue Crawler) · DB Procedure 기반 ETL 로직
                     <br>
                     <span class="flow-label">전환 후</span>
-                    TaskGroup 병렬 실행 · Sensor/Trigger 기반 의존 · Dynamic DAG 자동 생성 · SQL 파일 형상관리 · DMP 연계 등록
+                    TaskGroup 병렬 실행 · Sensor/Trigger 기반 의존 · Dynamic DAG 자동 생성 · SQL 파일 형상관리 · 사내 데이터 포털 연계 등록
                 </p>
 
                 <div class="block">
                     <div class="block-title">배경 및 문제</div>
                     <p>
-                        <strong>지연이 두 층에서 발생했다.</strong> DAG 내부에서는 의존 관계가 없는 작업까지
-                        하나씩만 실행되어 불필요한 대기가 쌓였고, DAG 사이에서는 선행 작업의
-                        <strong>&lsquo;예상 종료 시각&rsquo;에 맞춰 후행을 거는 방식</strong>이었다.
+                        <strong>배치 지연의 주된 원인이 두 곳이었다.</strong>
+                        DAG 안에서는 의존 관계가 없는 작업까지 하나씩만 실행되어 불필요한 대기가 쌓였고,
+                        DAG 사이에서는 선행 작업의 <strong>&lsquo;예상 종료 시각&rsquo;에 맞춰 후행을 거는 방식</strong>을 쓰고 있었다.
                         후자는 의존 관계를 선언한 것이 아니라 소요 시간을 어림잡은 것이어서,
                         <strong>선행이 늦어지면 후행이 준비되지 않은 데이터를 읽는 구조</strong>였다.
                     </p>
                     <p>
                         또한 ETL 요청마다 <strong>최초 적재를 수동 수행</strong>(TSV·Parquet 변환, Glue Crawler)했고,
                         반복되는 파이프라인 코드도 매번 새로 작성됐다.
-                        ETL 로직 상당수가 DB Procedure에 있어 <strong>변경 이력을 추적할 수단이 없었다.</strong>
+                        ETL 로직이 DB Procedure에 들어가 있는 경우도 있었는데,
+                        이런 건 <strong>변경 이력을 추적할 수단이 없었다.</strong>
                     </p>
                 </div>
 
@@ -893,14 +901,14 @@
                     <div class="block-title">기술적 판단</div>
                     <ul>
                         <li>
-                            <strong>시간 기반 스케줄은 의존 관계가 아니라고 판단</strong> —
-                            어림잡아 간격을 두는 방식은 선행이 지연되는 순간 정합성이 깨진다.
+                            <strong>암묵적 시간 의존 → 명시적 완료 의존</strong> —
+                            소요 시간을 어림잡아 간격을 두는 방식은 선행이 지연되는 순간 정합성이 깨진다.
                             간격을 더 벌리면 지연만 커지고 정합성은 여전히 보장되지 않으므로,
                             Sensor · TriggerDagRun으로 <strong>실제 완료 여부에 연결</strong>해
                             정합성 확보와 대기 제거를 동시에 달성
                         </li>
                         <li>
-                            <strong>DAG 내부 지연의 원인은 처리 성능이 아닌 순차 실행</strong>이라 보고,
+                            <strong>DAG 내부 지연의 원인은 처리 성능이 아닌 직렬 실행</strong>이라 보고,
                             자원 증설 대신 상호 의존이 없는 작업을 TaskGroup 병렬 구조로 전환
                         </li>
                         <li>
@@ -949,14 +957,14 @@
                     <div class="block-title">수행 내용 — 자동화 및 표준화</div>
                     <ul>
                         <li>
-                            <strong>최초 적재 자동화 및 DMP 연계</strong> — 수동 수행하던 TSV·Parquet 변환 적재와
+                            <strong>최초 적재 자동화 및 사내 데이터 포털 연계</strong> — 수동 수행하던 TSV·Parquet 변환 적재와
                             Glue Crawler 실행을 DAG 의존 관계로 구성하고,
                             포털에서 버튼 클릭만으로 ETL 작업을 등록하도록 연동해 요청~적재 수작업 구간 제거
                         </li>
                         <li>
                             <strong>DAG Factory 모듈 개발</strong> — 터미널에서 대화형으로 Operator와 용도를 입력받아
                             표준 포맷 DAG를 생성. 복사·수정 방식을 대체해 작성 공수를 줄이고 구조 일관성 확보.
-                            ETL 로직은 Procedure에서 SQL 파일로 이관하고 형상관리 체계 적용
+                            Procedure로 작성돼 있던 일부 ETL 로직은 SQL 파일로 이관하고 형상관리 체계 적용
                         </li>
                         <li>
                             <strong>알림 체계 개편</strong> — Slack 단일 채널 → Slack + Email(AWS SES) 이중 발송,
@@ -1003,13 +1011,13 @@
                     EC2 단일 서버 · LocalExecutor · 로컬 PostgreSQL · 로컬 로그 · 수동 배포
                     <br>
                     <span class="flow-label">전환 후</span>
-                    Kubernetes · KubernetesExecutor · RDS(MariaDB) · S3 로깅 · GitSync 자동 동기화
+                    Kubernetes · KubernetesExecutor · RDS(MariaDB) · S3 Logging · GitSync 자동 동기화
                 </p>
 
                 <div class="block">
                     <div class="block-title">배경 및 문제</div>
                     <p>
-                        EC2 한 대에서 LocalExecutor로 Airflow를 모놀리식하게 운영하고 있었다.
+                        EC2 한 대에서 LocalExecutor로 Airflow를 Monolithic하게 운영하고 있었다.
                         <strong>메타DB · DAG 로그 · DAG 파일이 모두 서버 로컬에 묶여 있어</strong>
                         저장 공간이 주기적으로 포화됐고, 그때마다 DAG 로그가 남지 않았다.
                         결과적으로 <strong>에러는 자주 나는데 원인을 확인할 근거가 사라지는 구조</strong>였고,
@@ -1047,7 +1055,7 @@
                 <div class="block">
                     <div class="block-title">수행 내용</div>
                     <ul>
-                        <li>EC2 단일 서버(모놀리식) → Kubernetes(MSA) 전환 및 KubernetesExecutor 적용, DAG 150개 무중단 이관</li>
+                        <li>EC2 단일 서버(Monolithic) → Kubernetes(MSA) 전환 및 KubernetesExecutor 적용, DAG 150개 무중단 이관</li>
                         <li>
                             메타DB를 로컬 PostgreSQL → <strong>AWS RDS(MariaDB)로 이관</strong> (사내 표준이자 비용이 낮은
                             MariaDB로 스택 일원화). <strong>엔진이 달라 덤프·복원 후 마이그레이션 명령으로 스키마를 올리는
@@ -1055,7 +1063,7 @@
                             기존 메타데이터를 <strong>2.7.2 스키마에 맞게 조정해 직접 적재</strong> —
                             빈 메타DB로 시작하지 않고 과거 실행 이력을 보존해 backfill 판단 근거와 운영 연속성 유지
                         </li>
-                        <li>로컬 로깅 → <strong>S3 로깅</strong>으로 전환하여 디스크 포화와 로그 유실을 동시에 해소</li>
+                        <li>로컬 Logging → <strong>S3 Logging</strong>으로 전환하여 디스크 포화와 로그 유실을 동시에 해소</li>
                         <li>
                             <strong>GitSync 도입</strong>으로 Jenkins 빌드·배포 단계를 거치지 않고 Git 변경이 직접 반영되도록 전환,
                             Helm 기반 인프라 코드화 및 Jenkins · ArgoCD 연계 자동 배포(이미지는 ECR 관리),
@@ -1124,7 +1132,8 @@
                         고객 불만 사항을 빠르게 인지해 대응 부서로 전달하는 것이 목표였다.
                         근거가 되는 데이터는 사내 5개 플랫폼의 시스템 로그 · 앱 로그 · VOC에 흩어져 있었고,
                         <strong>플랫폼마다 규정과 데이터 템플릿이 달라 사람이 취합해야만 파악이 가능한 상태</strong>였다.
-                        그 결과 불만 발생 시점과 대응 부서가 인지하는 시점 사이에 평균 반나절의 간격이 있었다.
+                        그 결과 불만 발생 시점과 대응 부서가 인지하는 시점 사이에 평균 반나절의 간격이 있었고,
+                        <strong>취합 과정에서 걸러지지 않으면 몇 개월간 인지되지 못한 채 남는 경우도 있었다.</strong>
                     </p>
                 </div>
 
@@ -1156,10 +1165,11 @@
                             Spark / SparkSQL 기반 비정형 텍스트 처리로 정제·통합하여 통합 마트 구성
                         </li>
                         <li>
-                            <strong>소스별 추출 rule 설계 — 이 프로젝트의 최대 난점</strong> —
+                            <strong>소스별 추출 rule 설계</strong> —
                             앱·시스템 로그의 비정형 텍스트는 키워드 기반 정규식으로 구간을 추출하고
-                            CSV로 수집되는 VOC는 필요한 컬럼에서 값만 선별했는데,
-                            <strong>서로 다른 형태의 추출 결과를 사전 정의한 통합 마트 필드에 매핑</strong>하는 작업이 가장 까다로웠다
+                            CSV로 수집되는 VOC는 필요한 컬럼에서 값만 선별.
+                            추출 결과의 형태가 소스마다 달라
+                            <strong>사전 정의한 통합 마트 필드에 매핑하는 기준을 소스별로 따로 잡아야 했다</strong>
                         </li>
                         <li>1시간 단위 준실시간 알림 구조를 구축하여 대응 부서에 자동 전달</li>
                         <li>
@@ -1179,9 +1189,13 @@
                     <div class="block-title">성과</div>
                     <ul>
                         <li>
-                            VOC 인지 주기 <strong>일 단위 → 1시간 단위</strong>, 인지~대응 소요 시간
-                            <strong>평균 반나절 → 1시간 이내</strong>
+                            <strong>대응 부서 담당자</strong>가 VOC를 인지하는 주기 <strong>일 단위 → 1시간 단위</strong>,
+                            인지부터 대응 착수까지 <strong>평균 반나절 → 1시간 이내</strong>
                             <span style="color: var(--text-light);">(도입 전후 인지·대응 timestamp 기준 비교)</span>
+                        </li>
+                        <li>
+                            수집된 VOC가 규칙에 따라 자동 전달되므로,
+                            <strong>사람이 취합하는 과정에서 걸러져 몇 개월간 묻히던 건이 구조적으로 사라짐</strong>
                         </li>
                         <li>모델 배포 사이클 <strong>80% 단축</strong> (수동 이미지 빌드 · DAG 수정 공수 제거)</li>
                     </ul>
